@@ -1,0 +1,16 @@
+E:\nonopCommerce\nopCommerce_3.30_Source\Tests\Nop.Tests\bin\Release\Nop.Tests.dll
+E:\nonopCommerce\nopCommerce_3.30_Source\Tests\Nop.Tests\bin\Release\Nop.Tests.pdb
+E:\nonopCommerce\nopCommerce_3.30_Source\Tests\Nop.Tests\bin\Release\mscorlib.dll
+E:\nonopCommerce\nopCommerce_3.30_Source\Tests\Nop.Tests\bin\Release\nunit.framework.dll
+E:\nonopCommerce\nopCommerce_3.30_Source\Tests\Nop.Tests\bin\Release\Rhino.Mocks.dll
+E:\nonopCommerce\nopCommerce_3.30_Source\Tests\Nop.Tests\bin\Release\nunit.framework.xml
+E:\nonopCommerce\nopCommerce_3.30_Source\Tests\Nop.Tests\bin\Release\Rhino.Mocks.xml
+E:\nonopCommerce\nopCommerce_3.30_Source\Tests\Nop.Tests\bin\Release\zh-Hans\mscorlib.resources.dll
+E:\nonopCommerce\nopCommerce_3.30_Source\Tests\Nop.Tests\bin\Release\normidna.nlp
+E:\nonopCommerce\nopCommerce_3.30_Source\Tests\Nop.Tests\bin\Release\normnfc.nlp
+E:\nonopCommerce\nopCommerce_3.30_Source\Tests\Nop.Tests\bin\Release\normnfd.nlp
+E:\nonopCommerce\nopCommerce_3.30_Source\Tests\Nop.Tests\bin\Release\normnfkc.nlp
+E:\nonopCommerce\nopCommerce_3.30_Source\Tests\Nop.Tests\bin\Release\normnfkd.nlp
+E:\nonopCommerce\nopCommerce_3.30_Source\Tests\Nop.Tests\obj\Release\Nop.Tests.csprojResolveAssemblyReference.cache
+E:\nonopCommerce\nopCommerce_3.30_Source\Tests\Nop.Tests\obj\Release\Nop.Tests.dll
+E:\nonopCommerce\nopCommerce_3.30_Source\Tests\Nop.Tests\obj\Release\Nop.Tests.pdb

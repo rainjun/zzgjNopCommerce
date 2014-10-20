@@ -1,0 +1,221 @@
+﻿@{
+    
+    Layout = "";
+}
+@model Nop.Plugin.Widgets.RainsAd.Models.ConfigurationModel
+@using Nop.Web.Framework;
+@using Nop.Core.Infrastructure;
+@{
+    var gridPageSize = EngineContext.Current.Resolve<Nop.Core.Domain.Common.AdminAreaSettings>().GridPageSize;
+}
+@Html.Action("StoreScopeConfiguration", "Setting", new { area = "Admin" })
+@using (Html.BeginForm())
+{
+    <table class="adminContent">
+        <tr>
+            <td colspan="2">
+                <input type="submit" name="save" class="k-button" value="@T("Admin.Common.Save")" />
+            </td>
+        </tr>
+    </table>
+    
+    <div class="section-header">
+        <div class="title">
+            <img src="@Url.Content("~/Administration/Content/images/ico-content.png")" alt="" />
+            @T("Admin.RainsAd.RainsAd")
+        </div>
+        <div class="options">
+            <a href="@Url.RouteUrl("Plugin.Widgets.RainsAd.CreateAd")" class="k-button">@T("Admin.Common.AddNew")</a>
+            <a href="@Url.RouteUrl("Plugin.Widgets.RainsAd.WidgetZones")" class="k-button">@T("Admin.RainsAd.WidgetZones")</a>
+        </div>
+    </div>
+    <table width="100%">
+        <tr>
+            <td class="adminTitle">
+                @Html.NopLabelFor(model => model.WidgetZone):
+            </td>
+            <td class="adminData">
+                @* @Html.DropDownList( Model.AvailableWidgetZones);*@
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="button" id="btnSearch" class="k-button" value="@T("Admin.Common.Search")" />
+            </td>
+        </tr>
+    </table>
+    <p>
+    </p>
+    //列表开始
+    <table class="adminContent">
+        <tr>
+            <td>
+                <div id="ads-grid"></div>
+
+                <script>
+                    $(document).ready(function() {
+                        $("#ads-grid").kendoGrid({
+                            dataSource: {
+                                type: "json",
+                                transport: {
+                                    read: {
+                                        url: "@Html.Raw(Url.Action("RainsAdsList", "WidgetsRainsAd", new RouteValueDictionary() { { "Namespaces", "Nop.Plugin.Widgets.RainsAd.Controllers" }, { "area", "" } }))",
+                                        type: "POST",
+                                        dataType: "json",
+                                        data: additionalData
+                                    }
+                                },
+                                schema: {
+                                    data: "Data",
+                                    total: "Total",
+                                    errors: "Errors"
+                                },
+                                requestEnd: function (e) {
+                                    if (e.type == "read") {
+                                        var response = e.response;
+                                        if (response) {
+                                            //store extra data
+                                            reportAggregates = e.response["ExtraData"];
+                                        }
+                                    }
+                                },
+                                error: function(e) {
+                                    display_kendoui_grid_error(e);
+                                    // Cancel the changes
+                                    this.cancelChanges();
+                                },
+                                pageSize: @(gridPageSize),
+                                serverPaging: true,
+                                serverFiltering: true,
+                                serverSorting: true
+                            },
+                            pageable: {
+                                refresh: true
+                            },
+                            editable: {
+                                confirmation: false,
+                                mode: "inline"
+                            },
+                            scrollable: false,
+                            dataBound: onDataBound,
+                            columns: [
+                                {
+                                    field: "Id",
+                                    headerTemplate: "<input id='mastercheckbox' type='checkbox'/>",
+                                    headerAttributes: { style: "text-align:center" },
+                                    attributes: { style: "text-align:center" },
+                                    template: "<input type='checkbox' value='#=Id#' class='checkboxGroups'/>",
+                                    width: 50
+                                },
+                                {
+                                    field: "Id",
+                                    title: "@T("Admin.Orders.Fields.ID")",
+                                    width: 50
+                                },
+                                {
+                                    field: "Name",
+                                    title: "@T("Plugins.Widgets.RainsAds.Fields.Name")",
+                                    width: 200
+                                },
+                                {
+                                    field: "WidgetZone",
+                                    title: "@T("Plugins.Widgets.RainsAds.Fields.WidgetZone")",
+                                    width: 300
+                                },
+                                {
+                                    field: "Text",
+                                    title: "@T("Plugins.Widgets.RainsAds.Fields.Text")",
+                                    width: 300
+                                }, {
+                                    field: "CreatedOn",
+                                    title: "@T("Admin.Orders.Fields.CreatedOn")",
+                                    width: 200,
+                                    type: "date",
+                                    format: "{0:G}"
+                                },
+                                {
+                                    field: "Id",
+                                    title: "@T("Admin.Common.Edit")",
+                                    width: 100,
+                                    template: '<a href="@Url.RouteUrl("Plugin.Widgets.RainsAd.RainsAdUpdate")?adid=#=Id#">@T("Admin.Common.Edit")</a>'
+                                }
+                            ]
+                        } );
+                    });
+                </script>
+
+                <script type="text/javascript">
+
+                    var selectedIds = [];
+                    var reportAggregates = "";
+
+                    $(document).ready(function () {
+
+                        //search button
+                        $('#btnSearch').click(function () {
+                            //search
+                            var grid = $('#ads-grid').data('kendoGrid');
+                            grid.dataSource.page(1); //new search. Set page size to 1
+                            grid.dataSource.read();
+                            //clear selected checkboxes
+                            $('.checkboxGroups').attr('checked', false).change();
+                            selectedIds = [];
+                            return false;
+                        });
+
+                        $('#mastercheckbox').click(function () {
+                            $('.checkboxGroups').attr('checked', $(this).is(':checked')).change();
+                        });
+
+                        //wire up checkboxes.
+                        $('#ads-grid').on('change', 'input[type=checkbox][id!=mastercheckbox]', function (e) {
+                            var $check = $(this);
+                            if ($check.is(":checked") == true) {
+                                var checked = jQuery.inArray($check.val(), selectedIds);
+                                if (checked == -1) {
+                                    //add id to selectedIds.
+                                    selectedIds.push($check.val());
+                                }
+                            }
+                            else {
+                                var checked = jQuery.inArray($check.val(), selectedIds);
+                                if (checked > -1) {
+                                    //remove id from selectedIds.
+                                    selectedIds = $.grep(selectedIds, function (item, index) {
+                                        return item != $check.val();
+                                    });
+                                }
+                            }
+                            updateMasterCheckbox();
+                        });
+                    });
+
+                    function additionalData() {
+                        return {
+                            WidgetZone: $('#@Html.FieldIdFor(model => model.WidgetZone)').val()
+                        };
+                    }
+
+                    function onDataBound(e) {
+
+                        $('#orders-grid input[type=checkbox][id!=mastercheckbox]').each(function () {
+                            var currentId = $(this).val();
+                            var checked = jQuery.inArray(currentId, selectedIds);
+                            //set checked based on if current checkbox's value is in selectedIds.
+                            $(this).attr('checked', checked > -1);
+                        });
+
+                        updateMasterCheckbox();
+
+                    }
+                    
+                    function updateMasterCheckbox() {
+                        var numChkBoxes = $('#ads-grid input[type=checkbox][id!=mastercheckbox]').length;
+                        var numChkBoxesChecked = $('#ads-grid input[type=checkbox][checked][id!=mastercheckbox]').length;
+                        $('#mastercheckbox').attr('checked', numChkBoxes == numChkBoxesChecked && numChkBoxes > 0);
+                    }
+                </script>
+            </td>
+        </tr>
+    </table>
+}

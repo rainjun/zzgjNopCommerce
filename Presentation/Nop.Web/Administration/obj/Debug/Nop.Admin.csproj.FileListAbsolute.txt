@@ -1,0 +1,5 @@
+E:\nonopCommerce\nopCommerce_3.30_Source\Presentation\Nop.Web\Administration\obj\Debug\Nop.Admin.csprojResolveAssemblyReference.cache
+E:\nonopCommerce\nopCommerce_3.30_Source\Presentation\Nop.Web\bin\Nop.Admin.dll
+E:\nonopCommerce\nopCommerce_3.30_Source\Presentation\Nop.Web\bin\Nop.Admin.pdb
+E:\nonopCommerce\nopCommerce_3.30_Source\Presentation\Nop.Web\Administration\obj\Debug\Nop.Admin.dll
+E:\nonopCommerce\nopCommerce_3.30_Source\Presentation\Nop.Web\Administration\obj\Debug\Nop.Admin.pdb

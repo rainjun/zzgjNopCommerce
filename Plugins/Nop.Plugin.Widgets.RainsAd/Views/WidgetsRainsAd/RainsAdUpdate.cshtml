@@ -1,0 +1,92 @@
+﻿@{
+    Layout = "";
+}
+@model Nop.Plugin.Widgets.RainsAd.Models.RainsAdsModel
+@using Nop.Web.Framework;
+@Html.Action("StoreScopeConfiguration", "Setting", new { area = "Admin" })
+@using (Html.BeginForm())
+{
+    <table class="adminContent">
+        <tr>
+            <td colspan="2">
+                <input type="submit" name="save" class="k-button" value="@T("Admin.Common.Save")" />
+            </td>
+        </tr>
+    </table>
+    <table class="adminContent">
+        <tr>
+            <td class="adminTitle">
+                @Html.NopLabelFor(model => model.Name):
+            </td>
+            <td class="adminData">
+                @Html.EditorFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name)
+            </td>
+        </tr>
+        <tr>
+            <td class="adminTitle">
+                @Html.NopLabelFor(model => model.WidgetZone):
+            </td>
+            <td class="adminData">
+                @Html.DropDownListFor(model => model.WidgetZone, Model.AvailableWidgetZones)
+                @Html.ValidationMessageFor(model => model.WidgetZone)
+            </td>
+        </tr>
+        <tr>
+            <td class="adminTitle">
+                @Html.NopLabelFor(model => model.Text):
+            </td>
+            <td class="adminData">
+                @Html.EditorFor(model => model.Text)
+                @Html.ValidationMessageFor(model => model.Text)
+            </td>
+        </tr>
+    </table>
+    <br />  
+    if (Model.Items.Count > 0)
+    {
+        foreach (var item in Model.Items)
+        {
+            <fieldset>
+                <legend><strong>@T("Plugins.Widgets.RainsAd.Picture")</strong></legend>
+                <table class="adminContent">
+                    <tr>
+                        <td class="adminTitle">
+                            @Html.NopLabelFor(item => item.PictureId):
+                        </td>
+                        <td class="adminData">
+                            @Html.EditorFor(item => item.PictureId)
+                            @Html.ValidationMessageFor(item => item.PictureId)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="adminTitle">
+                            @Html.NopLabelFor(item => item.Text):
+                        </td>
+                        <td class="adminData">
+                            @Html.EditorFor(item => item.Text)
+                            @Html.ValidationMessageFor(item => item.Text)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="adminTitle">
+                            @Html.NopLabelFor(item => item.Link):
+                        </td>
+                        <td class="adminData">
+                            @Html.EditorFor(item => item.Link)
+                            @Html.ValidationMessageFor(item => item.Link)
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+            <br />
+        }
+    }
+    <table class="adminContent">
+        <tr>
+            <td colspan="2">
+                <input type="submit" name="save" class="k-button" value="@T("Admin.Common.Save")" />
+            </td>
+        </tr>
+    </table>
+}

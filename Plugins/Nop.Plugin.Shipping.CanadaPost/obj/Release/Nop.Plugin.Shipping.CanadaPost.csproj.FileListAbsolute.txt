@@ -1,0 +1,7 @@
+E:\nonopCommerce\nopCommerce_3.30_Source\Presentation\Nop.Web\Plugins\Shipping.CanadaPost\Description.txt
+E:\nonopCommerce\nopCommerce_3.30_Source\Presentation\Nop.Web\Plugins\Shipping.CanadaPost\logo.jpg
+E:\nonopCommerce\nopCommerce_3.30_Source\Presentation\Nop.Web\Plugins\Shipping.CanadaPost\Nop.Plugin.Shipping.CanadaPost.dll
+E:\nonopCommerce\nopCommerce_3.30_Source\Presentation\Nop.Web\Plugins\Shipping.CanadaPost\Nop.Plugin.Shipping.CanadaPost.pdb
+E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.Shipping.CanadaPost\obj\Release\Nop.Plugin.Shipping.CanadaPost.csprojResolveAssemblyReference.cache
+E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.Shipping.CanadaPost\obj\Release\Nop.Plugin.Shipping.CanadaPost.dll
+E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.Shipping.CanadaPost\obj\Release\Nop.Plugin.Shipping.CanadaPost.pdb

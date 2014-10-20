@@ -1,0 +1,8 @@
+﻿Group: Widgets
+FriendlyName: Rain's Ad
+SystemName: Widgets.RainsAd
+Version: 1.00
+SupportedVersions: 3.30
+Author: rain
+DisplayOrder: 1
+FileName: Nop.Plugin.Widgets.RainsAd.dll

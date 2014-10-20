@@ -1,0 +1,193 @@
+﻿@model AddressModel
+
+@if (Model.CountryEnabled && Model.StateProvinceEnabled)
+{
+<script type="text/javascript">
+    //匹配省市区的关联
+    $(function () {
+        $("#@Html.FieldIdFor(model => model.StateProvinceId),#@Html.FieldIdFor(model => model.CityId)").change(function () {
+                var _jself = $(this);
+                var selectedItem = $(this).val();
+                var ddlStates;
+
+                if (_jself.attr("id") == "@Html.FieldIdFor(model => model.StateProvinceId)") {
+                    ddlStates = $("#@Html.FieldIdFor(model => model.CityId)");
+                } else {
+                    ddlStates = $("#@Html.FieldIdFor(model => model.DistrictId)");
+                }
+
+                var statesProgress = $("#states-loading-progress");
+                statesProgress.show();
+                $.ajax({
+                    cache: false,
+                    type: "GET",
+                    url: "@(Url.Action("GetAreaByParentId", "Country"))",
+                    data: { "parentId": selectedItem, "addEmptyStateIfRequired": "true" },
+                    success: function (data) {
+                        ddlStates.html('');
+                        $.each(data, function (id, option) {
+                            ddlStates.append($('<option></option>').val(option.id).html(option.name));
+                        });
+                        ddlStates.val("-1").change();
+                        statesProgress.hide();
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        alert('Failed to retrieve states.');
+                        ddlStates.val("-1").change();
+                        statesProgress.hide();
+                    }
+                });
+            });
+        });
+    </script>
+}
+@Html.HiddenFor(model => model.Id)
+@Html.HiddenFor(model => model.FirstNameEnabled)
+@Html.HiddenFor(model => model.FirstNameRequired)
+@Html.HiddenFor(model => model.LastNameEnabled)
+@Html.HiddenFor(model => model.LastNameRequired)
+@Html.HiddenFor(model => model.EmailEnabled)
+@Html.HiddenFor(model => model.EmailRequired)
+@Html.HiddenFor(model => model.CompanyEnabled)
+@Html.HiddenFor(model => model.CompanyRequired)
+@Html.HiddenFor(model => model.CountryEnabled)
+@Html.HiddenFor(model => model.StateProvinceEnabled)
+@Html.HiddenFor(model => model.CityEnabled)
+@Html.HiddenFor(model => model.CityRequired)
+@Html.HiddenFor(model => model.StreetAddressEnabled)
+@Html.HiddenFor(model => model.StreetAddressRequired)
+@Html.HiddenFor(model => model.StreetAddress2Enabled)
+@Html.HiddenFor(model => model.StreetAddress2Required)
+@Html.HiddenFor(model => model.ZipPostalCodeEnabled)
+@Html.HiddenFor(model => model.ZipPostalCodeRequired)
+@Html.HiddenFor(model => model.PhoneEnabled)
+@Html.HiddenFor(model => model.PhoneRequired)
+@Html.HiddenFor(model => model.FaxEnabled)
+@Html.HiddenFor(model => model.FaxRequired)
+<table>
+@if (Model.FirstNameEnabled)
+{
+<tr>
+    <td class="adminTitle">
+        @Html.NopLabelFor(model => model.FirstName):
+    </td>
+    <td class="adminData">
+        @Html.EditorFor(model => model.FirstName)
+        @Html.ValidationMessageFor(model => model.FirstName)
+    </td>
+</tr>
+}
+@if (Model.LastNameEnabled)
+{
+<tr>
+    <td class="adminTitle">
+        @Html.NopLabelFor(model => model.LastName):
+    </td>
+    <td class="adminData">
+        @Html.EditorFor(model => model.LastName)
+        @Html.ValidationMessageFor(model => model.LastName)
+    </td>
+</tr>
+}
+@if (Model.EmailEnabled)
+{
+<tr>
+    <td class="adminTitle">
+        @Html.NopLabelFor(model => model.Email):
+    </td>
+    <td class="adminData">
+        @Html.EditorFor(model => model.Email)
+        @Html.ValidationMessageFor(model => model.Email)
+    </td>
+</tr>
+}
+@if (Model.CompanyEnabled)
+{
+<tr>
+    <td class="adminTitle">
+        @Html.NopLabelFor(model => model.Company):
+    </td>
+    <td class="adminData">
+        @Html.EditorFor(model => model.Company)
+        @Html.ValidationMessageFor(model => model.Company)
+    </td>
+</tr>
+}
+ @*rainChange 国家不显示，默认使用当前可以使用的最后一个国家*@
+@Html.HiddenFor(model => model.CountryId, new { Value = Model.AvailableCountries.Last().Value })
+@if (Model.CountryEnabled && Model.StateProvinceEnabled)
+{
+    <tr>
+        <td class="adminTitle">
+            @Html.NopLabelFor(model => model.StateProvinceId):
+        </td>
+        <td class="adminData">
+            @Html.DropDownList("StateProvinceId", Model.AvailableStates)
+        </td>
+    </tr>
+    <tr>
+        <td class="adminTitle">
+            @Html.NopLabelFor(model => model.CityId):
+        </td>
+        <td class="adminData">
+            @Html.DropDownList("CityId", Model.AvailableCities)
+        </td>
+    </tr>
+    <tr>
+        <td class="adminTitle">
+            @Html.NopLabelFor(model => model.DistrictId):
+        </td>
+        <td class="adminData">
+            @Html.DropDownList("DistrictId", Model.AvailableDistricts)
+        </td>
+    </tr>
+    if (Model.StreetAddress2Enabled)
+    {
+    <tr>
+        <td class="adminTitle">
+            @Html.NopLabelFor(model => model.Address2):
+        </td>
+        <td class="adminData">
+            @Html.EditorFor(model => model.Address2)
+            @Html.ValidationMessageFor(model => model.Address2)
+        </td>
+    </tr>
+    }
+    if (Model.ZipPostalCodeEnabled)
+    {
+    <tr>
+        <td class="adminTitle">
+            @Html.NopLabelFor(model => model.ZipPostalCode):
+        </td>
+        <td class="adminData">
+            @Html.EditorFor(model => model.ZipPostalCode)
+            @Html.ValidationMessageFor(model => model.ZipPostalCode)
+        </td>
+    </tr>
+    }
+}
+@if (Model.PhoneEnabled)
+{
+<tr>
+    <td class="adminTitle">
+        @Html.NopLabelFor(model => model.PhoneNumber):
+    </td>
+    <td class="adminData">
+        @Html.EditorFor(model => model.PhoneNumber)
+        @Html.ValidationMessageFor(model => model.PhoneNumber)
+    </td>
+</tr>
+}
+@if (Model.FaxEnabled)
+{
+<tr>
+    <td class="adminTitle">
+        @Html.NopLabelFor(model => model.FaxNumber):
+    </td>
+    <td class="adminData">
+        @Html.EditorFor(model => model.FaxNumber)
+        @Html.ValidationMessageFor(model => model.FaxNumber)
+    </td>
+</tr>
+}
+</table>
