@@ -1,0 +1,230 @@
+﻿@model Nop.Plugin.Widgets.RainsAd.Models.RainsAdsInfoModel
+@using Nop.Web.Framework;
+@Html.ValidationSummary(false)
+@Html.HiddenFor(model => model.Id)
+
+@if (ViewBag.RefreshPage == true)
+{
+    <script type="text/javascript">
+        try {window.opener.document.forms['@(ViewBag.formId)'].@(ViewBag.btnId).click();}
+        catch (e){} 
+        window.close();
+    </script>
+}
+
+<table class="adminContent">
+    <tr>
+        <td class="adminTitle">@Html.NopLabelFor(model => model.Name):
+        </td>
+        <td class="adminData">@Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </td>
+    </tr>
+    <tr>
+        <td class="adminTitle">@Html.NopLabelFor(model => model.WidgetZone):
+        </td>
+        <td class="adminData">@Html.EditorFor(model => model.WidgetZone)
+            @Html.ValidationMessageFor(model => model.WidgetZone)
+        </td>
+    </tr>
+    <tr>
+        <td class="adminTitle">@Html.NopLabelFor(model => model.Text):
+        </td>
+        <td class="adminData">@Html.EditorFor(model => model.Text)
+            @Html.ValidationMessageFor(model => model.Text)
+        </td>
+    </tr>
+</table>
+<br />
+
+<fieldset>
+    <legend><strong>@T("Plugins.Widgets.RainsAd.Picture")</strong></legend>
+    <table class="adminContent">
+        <tr>
+            <td class="adminTitle">@Html.NopLabelFor(item => item.PictureId1):
+            </td>
+            <td class="adminData">@Html.EditorFor(item => item.PictureId1)
+                            @Html.ValidationMessageFor(item => item.PictureId1)
+            </td>
+        </tr>
+        <tr>
+            <td class="adminTitle">@Html.NopLabelFor(item => item.Tilte1):
+            </td>
+            <td class="adminData">@Html.EditorFor(item => item.Tilte1)
+                            @Html.ValidationMessageFor(item => item.Tilte1)
+            </td>
+        </tr>
+        <tr>
+            <td class="adminTitle">@Html.NopLabelFor(item => item.Link1):
+            </td>
+            <td class="adminData">@Html.EditorFor(item => item.Link1)
+                            @Html.ValidationMessageFor(item => item.Link1)
+            </td>
+        </tr>
+    </table>
+</fieldset>
+<br />
+
+<fieldset>
+    <legend><strong>@T("Plugins.Widgets.RainsAd.Picture")</strong></legend>
+    <table class="adminContent">
+        <tr>
+            <td class="adminTitle">@Html.NopLabelFor(item => item.PictureId2):
+            </td>
+            <td class="adminData">@Html.EditorFor(item => item.PictureId2)
+                            @Html.ValidationMessageFor(item => item.PictureId2)
+            </td>
+        </tr>
+        <tr>
+            <td class="adminTitle">@Html.NopLabelFor(item => item.Tilte2):
+            </td>
+            <td class="adminData">@Html.EditorFor(item => item.Tilte2)
+                            @Html.ValidationMessageFor(item => item.Tilte2)
+            </td>
+        </tr>
+        <tr>
+            <td class="adminTitle">@Html.NopLabelFor(item => item.Link2):
+            </td>
+            <td class="adminData">@Html.EditorFor(item => item.Link2)
+                            @Html.ValidationMessageFor(item => item.Link2)
+            </td>
+        </tr>
+    </table>
+</fieldset>
+<br />
+<fieldset>
+    <legend><strong>@T("Plugins.Widgets.RainsAd.Picture")</strong></legend>
+    <table class="adminContent">
+        <tr>
+            <td class="adminTitle">@Html.NopLabelFor(item => item.PictureId3):
+            </td>
+            <td class="adminData">@Html.EditorFor(item => item.PictureId3)
+                            @Html.ValidationMessageFor(item => item.PictureId3)
+            </td>
+        </tr>
+        <tr>
+            <td class="adminTitle">@Html.NopLabelFor(item => item.Tilte3):
+            </td>
+            <td class="adminData">@Html.EditorFor(item => item.Tilte3)
+                            @Html.ValidationMessageFor(item => item.Tilte3)
+            </td>
+        </tr>
+        <tr>
+            <td class="adminTitle">@Html.NopLabelFor(item => item.Link3):
+            </td>
+            <td class="adminData">@Html.EditorFor(item => item.Link3)
+                            @Html.ValidationMessageFor(item => item.Link3)
+            </td>
+        </tr>
+    </table>
+</fieldset>
+<br />
+<fieldset>
+    <legend><strong>@T("Plugins.Widgets.RainsAd.Picture")</strong></legend>
+    <table class="adminContent">
+        <tr>
+            <td class="adminTitle">@Html.NopLabelFor(item => item.PictureId4):
+            </td>
+            <td class="adminData">@Html.EditorFor(item => item.PictureId4)
+                            @Html.ValidationMessageFor(item => item.PictureId4)
+            </td>
+        </tr>
+        <tr>
+            <td class="adminTitle">@Html.NopLabelFor(item => item.Tilte4):
+            </td>
+            <td class="adminData">@Html.EditorFor(item => item.Tilte4)
+                            @Html.ValidationMessageFor(item => item.Tilte4)
+            </td>
+        </tr>
+        <tr>
+            <td class="adminTitle">@Html.NopLabelFor(item => item.Link4):
+            </td>
+            <td class="adminData">@Html.EditorFor(item => item.Link4)
+                            @Html.ValidationMessageFor(item => item.Link4)
+            </td>
+        </tr>
+    </table>
+</fieldset>
+<br />
+<fieldset>
+    <legend><strong>@T("Plugins.Widgets.RainsAd.Picture")</strong></legend>
+    <table class="adminContent">
+        <tr>
+            <td class="adminTitle">@Html.NopLabelFor(item => item.PictureId5):
+            </td>
+            <td class="adminData">@Html.EditorFor(item => item.PictureId5)
+                            @Html.ValidationMessageFor(item => item.PictureId5)
+            </td>
+        </tr>
+        <tr>
+            <td class="adminTitle">@Html.NopLabelFor(item => item.Tilte5):
+            </td>
+            <td class="adminData">@Html.EditorFor(item => item.Tilte5)
+                            @Html.ValidationMessageFor(item => item.Tilte5)
+            </td>
+        </tr>
+        <tr>
+            <td class="adminTitle">@Html.NopLabelFor(item => item.Link5):
+            </td>
+            <td class="adminData">@Html.EditorFor(item => item.Link5)
+                            @Html.ValidationMessageFor(item => item.Link5)
+            </td>
+        </tr>
+    </table>
+</fieldset>
+<br />
+<fieldset>
+    <legend><strong>@T("Plugins.Widgets.RainsAd.Picture")</strong></legend>
+    <table class="adminContent">
+        <tr>
+            <td class="adminTitle">@Html.NopLabelFor(item => item.PictureId6):
+            </td>
+            <td class="adminData">@Html.EditorFor(item => item.PictureId6)
+                            @Html.ValidationMessageFor(item => item.PictureId6)
+            </td>
+        </tr>
+        <tr>
+            <td class="adminTitle">@Html.NopLabelFor(item => item.Tilte6):
+            </td>
+            <td class="adminData">@Html.EditorFor(item => item.Tilte6)
+                            @Html.ValidationMessageFor(item => item.Tilte6)
+            </td>
+        </tr>
+        <tr>
+            <td class="adminTitle">@Html.NopLabelFor(item => item.Link6):
+            </td>
+            <td class="adminData">@Html.EditorFor(item => item.Link6)
+                            @Html.ValidationMessageFor(item => item.Link6)
+            </td>
+        </tr>
+    </table>
+</fieldset>
+<br />
+<fieldset>
+    <legend><strong>@T("Plugins.Widgets.RainsAd.Picture")</strong></legend>
+    <table class="adminContent">
+        <tr>
+            <td class="adminTitle">@Html.NopLabelFor(item => item.PictureId7):
+            </td>
+            <td class="adminData">@Html.EditorFor(item => item.PictureId7)
+                            @Html.ValidationMessageFor(item => item.PictureId7)
+            </td>
+        </tr>
+        <tr>
+            <td class="adminTitle">@Html.NopLabelFor(item => item.Tilte7):
+            </td>
+            <td class="adminData">@Html.EditorFor(item => item.Tilte7)
+                            @Html.ValidationMessageFor(item => item.Tilte7)
+            </td>
+        </tr>
+        <tr>
+            <td class="adminTitle">@Html.NopLabelFor(item => item.Link7):
+            </td>
+            <td class="adminData">@Html.EditorFor(item => item.Link7)
+                            @Html.ValidationMessageFor(item => item.Link7)
+            </td>
+        </tr>
+    </table>
+</fieldset>
+
+
