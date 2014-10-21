@@ -6,3 +6,11 @@ E:\nonopCommerce\nopCommerce_3.30_Source\Presentation\Nop.Web\Plugins\Shipping.U
 E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.Shipping.UPS\obj\Release\Nop.Plugin.Shipping.UPS.dll
 E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.Shipping.UPS\obj\Release\Nop.Plugin.Shipping.UPS.pdb
 E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.Shipping.UPS\obj\Release\Nop.Plugin.Shipping.UPS.csprojResolveAssemblyReference.cache
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Shipping.UPS\Description.txt
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Shipping.UPS\logo.jpg
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Shipping.UPS\Nop.Plugin.Shipping.UPS.dll.config
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Shipping.UPS\Nop.Plugin.Shipping.UPS.dll
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Shipping.UPS\Nop.Plugin.Shipping.UPS.pdb
+I:\nonopCommerce\zzgj\source\githubSource\Plugins\Nop.Plugin.Shipping.UPS\obj\Release\Nop.Plugin.Shipping.UPS.csprojResolveAssemblyReference.cache
+I:\nonopCommerce\zzgj\source\githubSource\Plugins\Nop.Plugin.Shipping.UPS\obj\Release\Nop.Plugin.Shipping.UPS.dll
+I:\nonopCommerce\zzgj\source\githubSource\Plugins\Nop.Plugin.Shipping.UPS\obj\Release\Nop.Plugin.Shipping.UPS.pdb

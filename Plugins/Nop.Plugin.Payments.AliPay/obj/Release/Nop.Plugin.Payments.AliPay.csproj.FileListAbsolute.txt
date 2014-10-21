@@ -11,3 +11,10 @@ E:\nonopCommerce\nopCommerce_3.30_Source\Presentation\Nop.Web\Plugins\Payments.A
 E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.Payments.AliPay\obj\Release\Nop.Plugin.Payments.AliPay.csprojResolveAssemblyReference.cache
 E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.Payments.AliPay\obj\Release\Nop.Plugin.Payments.AliPay.dll
 E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.Payments.AliPay\obj\Release\Nop.Plugin.Payments.AliPay.pdb
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Payments.AliPay\Description.txt
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Payments.AliPay\logo.jpg
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Payments.AliPay\Nop.Plugin.Payments.AliPay.dll
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Payments.AliPay\Nop.Plugin.Payments.AliPay.pdb
+I:\nonopCommerce\zzgj\source\githubSource\Plugins\Nop.Plugin.Payments.AliPay\obj\Release\Nop.Plugin.Payments.AliPay.csprojResolveAssemblyReference.cache
+I:\nonopCommerce\zzgj\source\githubSource\Plugins\Nop.Plugin.Payments.AliPay\obj\Release\Nop.Plugin.Payments.AliPay.dll
+I:\nonopCommerce\zzgj\source\githubSource\Plugins\Nop.Plugin.Payments.AliPay\obj\Release\Nop.Plugin.Payments.AliPay.pdb

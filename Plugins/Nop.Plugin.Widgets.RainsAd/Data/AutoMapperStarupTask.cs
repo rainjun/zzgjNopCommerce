@@ -17,6 +17,7 @@ namespace Nop.Plugin.Widgets.RainsAd.Data
             //TODO remove 'CreatedOnUtc' ignore mappings because now presentation layer models have 'CreatedOn' property and core entities have 'CreatedOnUtc' property (distinct names)
 
             Mapper.CreateMap<RainsAdsInfo, RainsAdsInfoModel>();
+            Mapper.CreateMap<RainsAds, RainsAdsModel>();
         }
 
         public int Order

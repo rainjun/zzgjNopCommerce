@@ -5,3 +5,10 @@ E:\nonopCommerce\nopCommerce_3.30_Source\Presentation\Nop.Web\Plugins\ExchangeRa
 E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.ExchangeRate.McExchange\obj\Release\Nop.Plugin.ExchangeRate.McExchange.csprojResolveAssemblyReference.cache
 E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.ExchangeRate.McExchange\obj\Release\Nop.Plugin.ExchangeRate.McExchange.dll
 E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.ExchangeRate.McExchange\obj\Release\Nop.Plugin.ExchangeRate.McExchange.pdb
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\ExchangeRate.McExchange\Description.txt
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\ExchangeRate.McExchange\logo.jpg
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\ExchangeRate.McExchange\Nop.Plugin.ExchangeRate.McExchange.dll
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\ExchangeRate.McExchange\Nop.Plugin.ExchangeRate.McExchange.pdb
+I:\nonopCommerce\zzgj\source\githubSource\Plugins\Nop.Plugin.ExchangeRate.McExchange\obj\Release\Nop.Plugin.ExchangeRate.McExchange.csprojResolveAssemblyReference.cache
+I:\nonopCommerce\zzgj\source\githubSource\Plugins\Nop.Plugin.ExchangeRate.McExchange\obj\Release\Nop.Plugin.ExchangeRate.McExchange.dll
+I:\nonopCommerce\zzgj\source\githubSource\Plugins\Nop.Plugin.ExchangeRate.McExchange\obj\Release\Nop.Plugin.ExchangeRate.McExchange.pdb

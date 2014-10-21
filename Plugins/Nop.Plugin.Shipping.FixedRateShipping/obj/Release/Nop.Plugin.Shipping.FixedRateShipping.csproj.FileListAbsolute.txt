@@ -5,3 +5,10 @@ E:\nonopCommerce\nopCommerce_3.30_Source\Presentation\Nop.Web\Plugins\Shipping.F
 E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.Shipping.FixedRateShipping\obj\Release\Nop.Plugin.Shipping.FixedRateShipping.dll
 E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.Shipping.FixedRateShipping\obj\Release\Nop.Plugin.Shipping.FixedRateShipping.pdb
 E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.Shipping.FixedRateShipping\obj\Release\Nop.Plugin.Shipping.FixedRateShipping.csprojResolveAssemblyReference.cache
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Shipping.FixedRateShipping\Description.txt
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Shipping.FixedRateShipping\logo.jpg
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Shipping.FixedRateShipping\Nop.Plugin.Shipping.FixedRateShipping.dll
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Shipping.FixedRateShipping\Nop.Plugin.Shipping.FixedRateShipping.pdb
+I:\nonopCommerce\zzgj\source\githubSource\Plugins\Nop.Plugin.Shipping.FixedRateShipping\obj\Release\Nop.Plugin.Shipping.FixedRateShipping.csprojResolveAssemblyReference.cache
+I:\nonopCommerce\zzgj\source\githubSource\Plugins\Nop.Plugin.Shipping.FixedRateShipping\obj\Release\Nop.Plugin.Shipping.FixedRateShipping.dll
+I:\nonopCommerce\zzgj\source\githubSource\Plugins\Nop.Plugin.Shipping.FixedRateShipping\obj\Release\Nop.Plugin.Shipping.FixedRateShipping.pdb

@@ -34,7 +34,7 @@ namespace Nop.Plugin.Widgets.RainsAd.Services
 
         void UpdateRainsWidgetZone(RainsWidgetZones rainsWidgetZones);
 
-        IList<string> GetWidgetZons(int pageIndex = 0, int pageSize = int.MaxValue);
+        IList<string> GetWidgetZons();
 
         IPagedList<RainsAdsInfo> GetAllRainsAdsInfo(int pageIndex = 0, int pageSize = int.MaxValue);
 
@@ -45,5 +45,7 @@ namespace Nop.Plugin.Widgets.RainsAd.Services
         void UpdateRainsAdInfo(RainsAdsInfo rainsAdInfo);
 
         RainsAdsInfo GetAdInfoById(int rainsAdInfoId);
+
+        RainsAdsInfo GetAdInfoByWG(string widgetZones);
     }
 }

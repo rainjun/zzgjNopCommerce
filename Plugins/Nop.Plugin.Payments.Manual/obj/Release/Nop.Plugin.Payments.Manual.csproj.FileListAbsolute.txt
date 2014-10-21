@@ -5,3 +5,10 @@ E:\nonopCommerce\nopCommerce_3.30_Source\Presentation\Nop.Web\Plugins\Payments.M
 E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.Payments.Manual\obj\Release\Nop.Plugin.Payments.Manual.csprojResolveAssemblyReference.cache
 E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.Payments.Manual\obj\Release\Nop.Plugin.Payments.Manual.dll
 E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.Payments.Manual\obj\Release\Nop.Plugin.Payments.Manual.pdb
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Payments.Manual\Description.txt
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Payments.Manual\logo.jpg
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Payments.Manual\Nop.Plugin.Payments.Manual.dll
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Payments.Manual\Nop.Plugin.Payments.Manual.pdb
+I:\nonopCommerce\zzgj\source\githubSource\Plugins\Nop.Plugin.Payments.Manual\obj\Release\Nop.Plugin.Payments.Manual.csprojResolveAssemblyReference.cache
+I:\nonopCommerce\zzgj\source\githubSource\Plugins\Nop.Plugin.Payments.Manual\obj\Release\Nop.Plugin.Payments.Manual.dll
+I:\nonopCommerce\zzgj\source\githubSource\Plugins\Nop.Plugin.Payments.Manual\obj\Release\Nop.Plugin.Payments.Manual.pdb

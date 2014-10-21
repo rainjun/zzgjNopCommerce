@@ -20,7 +20,7 @@ namespace Nop.Plugin.Widgets.RainsAd
 
         public static RainsAds ToEntity(this RainsAdsModel model)
         {
-            return Mapper.DynamicMap<RainsAdsModel, RainsAds>(model);
+            return Mapper.Map<RainsAdsModel, RainsAds>(model);
         }
 
         public static RainsAds ToEntity(this RainsAdsModel model, RainsAds destination)
@@ -43,7 +43,8 @@ namespace Nop.Plugin.Widgets.RainsAd
 
         public static RainsAdsInfo ToEntity(this RainsAdsInfoModel model, RainsAdsInfo destination)
         {
-            return Mapper.Map(model, destination);
+            Mapper.DynamicMap(model, destination);
+            return destination;
         }
         #endregion
     }

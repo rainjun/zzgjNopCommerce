@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace Nop.Plugin.Widgets.RainsAd.Models
 {
@@ -16,10 +17,13 @@ namespace Nop.Plugin.Widgets.RainsAd.Models
         }
         public int Id { get; set; }
         public int Aid { get; set; }
+        [AllowHtml]
         public string Name { get; set; }
         [UIHint("Picture")]
         public int PictureId { get; set; }
+        [AllowHtml]
         public string PictureUrl { get; set; }
+        [AllowHtml]
         public string Link { get; set; }
 
         [NopResourceDisplayName("Plugins.Widgets.RainsAds.Fields.CreateOn")]

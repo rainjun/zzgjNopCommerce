@@ -5,3 +5,10 @@ E:\nonopCommerce\nopCommerce_3.30_Source\Presentation\Nop.Web\Plugins\Tax.FixedR
 E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.Tax.FixedRate\obj\Release\Nop.Plugin.Tax.FixedRate.csprojResolveAssemblyReference.cache
 E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.Tax.FixedRate\obj\Release\Nop.Plugin.Tax.FixedRate.dll
 E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.Tax.FixedRate\obj\Release\Nop.Plugin.Tax.FixedRate.pdb
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Tax.FixedRate\Description.txt
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Tax.FixedRate\logo.jpg
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Tax.FixedRate\Nop.Plugin.Tax.FixedRate.dll
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Tax.FixedRate\Nop.Plugin.Tax.FixedRate.pdb
+I:\nonopCommerce\zzgj\source\githubSource\Plugins\Nop.Plugin.Tax.FixedRate\obj\Release\Nop.Plugin.Tax.FixedRate.csprojResolveAssemblyReference.cache
+I:\nonopCommerce\zzgj\source\githubSource\Plugins\Nop.Plugin.Tax.FixedRate\obj\Release\Nop.Plugin.Tax.FixedRate.dll
+I:\nonopCommerce\zzgj\source\githubSource\Plugins\Nop.Plugin.Tax.FixedRate\obj\Release\Nop.Plugin.Tax.FixedRate.pdb

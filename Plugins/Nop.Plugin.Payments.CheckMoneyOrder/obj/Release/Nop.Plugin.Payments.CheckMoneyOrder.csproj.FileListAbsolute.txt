@@ -5,3 +5,10 @@ E:\nonopCommerce\nopCommerce_3.30_Source\Presentation\Nop.Web\Plugins\Payments.C
 E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.Payments.CheckMoneyOrder\obj\Release\Nop.Plugin.Payments.CheckMoneyOrder.dll
 E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.Payments.CheckMoneyOrder\obj\Release\Nop.Plugin.Payments.CheckMoneyOrder.pdb
 E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.Payments.CheckMoneyOrder\obj\Release\Nop.Plugin.Payments.CheckMoneyOrder.csprojResolveAssemblyReference.cache
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Payments.CheckMoneyOrder\Description.txt
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Payments.CheckMoneyOrder\logo.jpg
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Payments.CheckMoneyOrder\Nop.Plugin.Payments.CheckMoneyOrder.dll
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Payments.CheckMoneyOrder\Nop.Plugin.Payments.CheckMoneyOrder.pdb
+I:\nonopCommerce\zzgj\source\githubSource\Plugins\Nop.Plugin.Payments.CheckMoneyOrder\obj\Release\Nop.Plugin.Payments.CheckMoneyOrder.csprojResolveAssemblyReference.cache
+I:\nonopCommerce\zzgj\source\githubSource\Plugins\Nop.Plugin.Payments.CheckMoneyOrder\obj\Release\Nop.Plugin.Payments.CheckMoneyOrder.dll
+I:\nonopCommerce\zzgj\source\githubSource\Plugins\Nop.Plugin.Payments.CheckMoneyOrder\obj\Release\Nop.Plugin.Payments.CheckMoneyOrder.pdb

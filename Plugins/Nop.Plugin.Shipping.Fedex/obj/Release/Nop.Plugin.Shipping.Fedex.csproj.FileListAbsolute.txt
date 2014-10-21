@@ -6,3 +6,11 @@ E:\nonopCommerce\nopCommerce_3.30_Source\Presentation\Nop.Web\Plugins\Shipping.F
 E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.Shipping.Fedex\obj\Release\Nop.Plugin.Shipping.Fedex.csprojResolveAssemblyReference.cache
 E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.Shipping.Fedex\obj\Release\Nop.Plugin.Shipping.Fedex.dll
 E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.Shipping.Fedex\obj\Release\Nop.Plugin.Shipping.Fedex.pdb
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Shipping.Fedex\Description.txt
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Shipping.Fedex\logo.jpg
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Shipping.Fedex\Nop.Plugin.Shipping.Fedex.dll.config
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Shipping.Fedex\Nop.Plugin.Shipping.Fedex.dll
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Shipping.Fedex\Nop.Plugin.Shipping.Fedex.pdb
+I:\nonopCommerce\zzgj\source\githubSource\Plugins\Nop.Plugin.Shipping.Fedex\obj\Release\Nop.Plugin.Shipping.Fedex.csprojResolveAssemblyReference.cache
+I:\nonopCommerce\zzgj\source\githubSource\Plugins\Nop.Plugin.Shipping.Fedex\obj\Release\Nop.Plugin.Shipping.Fedex.dll
+I:\nonopCommerce\zzgj\source\githubSource\Plugins\Nop.Plugin.Shipping.Fedex\obj\Release\Nop.Plugin.Shipping.Fedex.pdb

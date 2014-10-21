@@ -5,3 +5,10 @@ E:\nonopCommerce\nopCommerce_3.30_Source\Presentation\Nop.Web\Plugins\Tax.Countr
 E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.Tax.CountryStateZip\obj\Release\Nop.Plugin.Tax.CountryStateZip.dll
 E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.Tax.CountryStateZip\obj\Release\Nop.Plugin.Tax.CountryStateZip.pdb
 E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.Tax.CountryStateZip\obj\Release\Nop.Plugin.Tax.CountryStateZip.csprojResolveAssemblyReference.cache
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Tax.CountryStateZip\Description.txt
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Tax.CountryStateZip\logo.jpg
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Tax.CountryStateZip\Nop.Plugin.Tax.CountryStateZip.dll
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Tax.CountryStateZip\Nop.Plugin.Tax.CountryStateZip.pdb
+I:\nonopCommerce\zzgj\source\githubSource\Plugins\Nop.Plugin.Tax.CountryStateZip\obj\Release\Nop.Plugin.Tax.CountryStateZip.csprojResolveAssemblyReference.cache
+I:\nonopCommerce\zzgj\source\githubSource\Plugins\Nop.Plugin.Tax.CountryStateZip\obj\Release\Nop.Plugin.Tax.CountryStateZip.dll
+I:\nonopCommerce\zzgj\source\githubSource\Plugins\Nop.Plugin.Tax.CountryStateZip\obj\Release\Nop.Plugin.Tax.CountryStateZip.pdb

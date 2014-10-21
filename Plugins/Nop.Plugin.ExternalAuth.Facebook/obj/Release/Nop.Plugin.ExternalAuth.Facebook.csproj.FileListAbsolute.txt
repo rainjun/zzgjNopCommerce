@@ -9,3 +9,14 @@ E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.ExternalAuth.Faceboo
 E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.ExternalAuth.Facebook\obj\Release\Nop.Plugin.ExternalAuth.Facebook.csprojResolveAssemblyReference.cache
 E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.ExternalAuth.Facebook\obj\Release\Nop.Plugin.ExternalAuth.Facebook.dll
 E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.ExternalAuth.Facebook\obj\Release\Nop.Plugin.ExternalAuth.Facebook.pdb
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\ExternalAuth.Facebook\Description.txt
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\ExternalAuth.Facebook\Content\facebookstyles.css
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\ExternalAuth.Facebook\Content\Images\facebook-signing.png
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\ExternalAuth.Facebook\logo.jpg
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\ExternalAuth.Facebook\Nop.Plugin.ExternalAuth.Facebook.dll.config
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\ExternalAuth.Facebook\Nop.Plugin.ExternalAuth.Facebook.dll
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\ExternalAuth.Facebook\Nop.Plugin.ExternalAuth.Facebook.pdb
+I:\nonopCommerce\zzgj\source\githubSource\Plugins\Nop.Plugin.ExternalAuth.Facebook\obj\Release\Nop.Plugin.ExternalAuth.Facebook.csproj.App.config
+I:\nonopCommerce\zzgj\source\githubSource\Plugins\Nop.Plugin.ExternalAuth.Facebook\obj\Release\Nop.Plugin.ExternalAuth.Facebook.csprojResolveAssemblyReference.cache
+I:\nonopCommerce\zzgj\source\githubSource\Plugins\Nop.Plugin.ExternalAuth.Facebook\obj\Release\Nop.Plugin.ExternalAuth.Facebook.dll
+I:\nonopCommerce\zzgj\source\githubSource\Plugins\Nop.Plugin.ExternalAuth.Facebook\obj\Release\Nop.Plugin.ExternalAuth.Facebook.pdb

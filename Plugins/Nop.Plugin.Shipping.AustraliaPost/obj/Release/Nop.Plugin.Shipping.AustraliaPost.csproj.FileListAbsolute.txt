@@ -5,3 +5,10 @@ E:\nonopCommerce\nopCommerce_3.30_Source\Presentation\Nop.Web\Plugins\Shipping.A
 E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.Shipping.AustraliaPost\obj\Release\Nop.Plugin.Shipping.AustraliaPost.csprojResolveAssemblyReference.cache
 E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.Shipping.AustraliaPost\obj\Release\Nop.Plugin.Shipping.AustraliaPost.dll
 E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.Shipping.AustraliaPost\obj\Release\Nop.Plugin.Shipping.AustraliaPost.pdb
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Shipping.AustraliaPost\Description.txt
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Shipping.AustraliaPost\logo.jpg
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Shipping.AustraliaPost\Nop.Plugin.Shipping.AustraliaPost.dll
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Shipping.AustraliaPost\Nop.Plugin.Shipping.AustraliaPost.pdb
+I:\nonopCommerce\zzgj\source\githubSource\Plugins\Nop.Plugin.Shipping.AustraliaPost\obj\Release\Nop.Plugin.Shipping.AustraliaPost.csprojResolveAssemblyReference.cache
+I:\nonopCommerce\zzgj\source\githubSource\Plugins\Nop.Plugin.Shipping.AustraliaPost\obj\Release\Nop.Plugin.Shipping.AustraliaPost.dll
+I:\nonopCommerce\zzgj\source\githubSource\Plugins\Nop.Plugin.Shipping.AustraliaPost\obj\Release\Nop.Plugin.Shipping.AustraliaPost.pdb

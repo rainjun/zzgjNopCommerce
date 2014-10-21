@@ -18,8 +18,8 @@ namespace Nop.Plugin.Widgets.RainsAd.Domain
         /// Í¼Æ¬ÊıÁ¿
         /// </summary>
         public int PictureCount { get; set; }
-        public DateTime CreateOn { get; set; }
-        public DateTime UpdateOn { get; set; }
+        public DateTime CreatedOn { get; set; }
+        public DateTime UpdatedOn { get; set; }
 
         public string Tilte1 { get; set; }
         public string Link1{ get; set; }

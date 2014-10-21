@@ -18,6 +18,9 @@ using System.Web.Mvc;
 
 namespace Nop.Plugin.Widgets.RainsAd.Controllers
 {
+    /// <summary>
+    /// 缺少了缓存
+    /// </summary>
     public class WidgetsRainsAdController : BasePluginController
     {
         private readonly IWorkContext _workContext;
@@ -43,6 +46,100 @@ namespace Nop.Plugin.Widgets.RainsAd.Controllers
             this._settingService = settingService;
             this._cacheManager = cacheManager;
             this._rainsAdService = rainsAdService;
+        }
+
+        #region tools
+
+        protected RainsAdsInfo ToEntityInfo(RainsAdsInfoModel model)
+        {
+            if (model == null)
+                return null;
+
+            RainsAdsInfo entity = new RainsAdsInfo();
+            entity.Id = model.Id;
+            entity.Name = model.Name;
+            entity.PictureId = model.PictureId;
+            entity.PictureCount = model.PictureCount;
+            entity.Text = model.Text;
+            entity.WidgetZone = model.WidgetZone;
+            entity.CreatedOn = model.CreatedOn;
+            entity.UpdatedOn = model.UpdatedOn;
+
+            entity.Link1 = model.Link1;
+            entity.Tilte1 = model.Tilte1;
+            entity.PictureId1 = model.PictureId1;
+
+            entity.Link2 = model.Link2;
+            entity.Tilte2 = model.Tilte2;
+            entity.PictureId2 = model.PictureId2;
+
+            entity.Link3 = model.Link3;
+            entity.Tilte3 = model.Tilte3;
+            entity.PictureId3 = model.PictureId3;
+
+            entity.Link4 = model.Link4;
+            entity.Tilte4 = model.Tilte4;
+            entity.PictureId4 = model.PictureId4;
+
+            entity.Link5 = model.Link5;
+            entity.Tilte5 = model.Tilte5;
+            entity.PictureId5 = model.PictureId5;
+
+            entity.Link6 = model.Link6;
+            entity.Tilte6 = model.Tilte6;
+            entity.PictureId6 = model.PictureId6;
+
+            entity.Link7 = model.Link7;
+            entity.Tilte7 = model.Tilte7;
+            entity.PictureId7 = model.PictureId7;
+
+            return entity;
+        }
+
+        protected RainsAdsInfoModel ToModelInfo(RainsAdsInfo entity)
+        {
+            if (entity == null)
+                return null;
+
+            RainsAdsInfoModel model = new RainsAdsInfoModel();
+            model.Id = entity.Id;
+            model.Name = entity.Name;
+            model.PictureId = entity.PictureId;
+            model.PictureCount = entity.PictureCount;
+            model.Text = entity.Text;
+            model.WidgetZone = entity.WidgetZone;
+            model.CreatedOn = entity.CreatedOn;
+            model.UpdatedOn = entity.UpdatedOn;
+
+            model.Link1 = entity.Link1;
+            model.Tilte1 = entity.Tilte1;
+            model.PictureId1 = entity.PictureId1;
+
+            model.Link2 = entity.Link2;
+            model.Tilte2 = entity.Tilte2;
+            model.PictureId2 = entity.PictureId2;
+
+            model.Link3 = entity.Link3;
+            model.Tilte3 = entity.Tilte3;
+            model.PictureId3 = entity.PictureId3;
+
+            model.Link4 = entity.Link4;
+            model.Tilte4 = entity.Tilte4;
+            model.PictureId4 = entity.PictureId4;
+
+            model.Link5 = entity.Link5;
+            model.Tilte5 = entity.Tilte5;
+            model.PictureId5 = entity.PictureId5;
+
+            model.Link6 = entity.Link6;
+            model.Tilte6 = entity.Tilte6;
+            model.PictureId6 = entity.PictureId6;
+
+            model.Link7 = entity.Link7;
+            model.Tilte7 = entity.Tilte7;
+            model.PictureId7 = entity.PictureId7;
+
+            return model;
         }
 
         protected string GetPictureUrl(int pictureId)
@@ -107,6 +204,8 @@ namespace Nop.Plugin.Widgets.RainsAd.Controllers
 
         }
 
+        #endregion
+
         [AdminAuthorize]
         [ChildActionOnly]
         public ActionResult Configure()
@@ -140,37 +239,67 @@ namespace Nop.Plugin.Widgets.RainsAd.Controllers
         [ChildActionOnly]
         public ActionResult PublicInfo(string widgetZone)
         {
-            var RainsAdSettings = _settingService.LoadSetting<RainsAdSettings>(_storeContext.CurrentStore.Id);
+            var rainsAdInfo = _rainsAdService.GetAdInfoByWG(widgetZone);
 
-            var model = new PublicInfoModel();
-            model.Picture1Url = GetPictureUrl(RainsAdSettings.Picture1Id);
-            model.Text1 = RainsAdSettings.Text1;
-            model.Link1 = RainsAdSettings.Link1;
+            var model = rainsAdInfo.ToModel();
 
-            model.Picture2Url = GetPictureUrl(RainsAdSettings.Picture2Id);
-            model.Text2 = RainsAdSettings.Text2;
-            model.Link2 = RainsAdSettings.Link2;
+            var picUrl = GetPictureUrl(model.PictureId1);
+            //名称或者图片其中一个必须要有值
+            if (!string.IsNullOrEmpty(picUrl) || !string.IsNullOrEmpty(model.Tilte1))
+            {
+                model.Items.Add(new RainsAdItemsModel { Name = model.Tilte1, Link = model.Link1, PictureId = model.PictureId1, PictureUrl = picUrl });
+            }
 
-            model.Picture3Url = GetPictureUrl(RainsAdSettings.Picture3Id);
-            model.Text3 = RainsAdSettings.Text3;
-            model.Link3 = RainsAdSettings.Link3;
+            picUrl = GetPictureUrl(model.PictureId2);
+            //名称或者图片其中一个必须要有值
+            if (!string.IsNullOrEmpty(picUrl) || !string.IsNullOrEmpty(model.Tilte2))
+            {
+                model.Items.Add(new RainsAdItemsModel { Name = model.Tilte2, Link = model.Link2, PictureId = model.PictureId2, PictureUrl = picUrl });
+            }
 
-            model.Picture4Url = GetPictureUrl(RainsAdSettings.Picture4Id);
-            model.Text4 = RainsAdSettings.Text4;
-            model.Link4 = RainsAdSettings.Link4;
+            picUrl = GetPictureUrl(model.PictureId3);
+            //名称或者图片其中一个必须要有值
+            if (!string.IsNullOrEmpty(picUrl) || !string.IsNullOrEmpty(model.Tilte3))
+            {
+                model.Items.Add(new RainsAdItemsModel { Name = model.Tilte3, Link = model.Link3, PictureId = model.PictureId3, PictureUrl = picUrl });
+            }
 
-            model.Picture5Url = GetPictureUrl(RainsAdSettings.Picture5Id);
-            model.Text5 = RainsAdSettings.Text5;
-            model.Link5 = RainsAdSettings.Link5;
+            picUrl = GetPictureUrl(model.PictureId4);
+            //名称或者图片其中一个必须要有值
+            if (!string.IsNullOrEmpty(picUrl) || !string.IsNullOrEmpty(model.Tilte4))
+            {
+                model.Items.Add(new RainsAdItemsModel { Name = model.Tilte4, Link = model.Link4, PictureId = model.PictureId4, PictureUrl = picUrl });
+            }
 
-            if (string.IsNullOrEmpty(model.Picture1Url) && string.IsNullOrEmpty(model.Picture2Url) &&
-                string.IsNullOrEmpty(model.Picture3Url) && string.IsNullOrEmpty(model.Picture4Url) &&
-                string.IsNullOrEmpty(model.Picture5Url))
+            picUrl = GetPictureUrl(model.PictureId5);
+            //名称或者图片其中一个必须要有值
+            if (!string.IsNullOrEmpty(picUrl) || !string.IsNullOrEmpty(model.Tilte5))
+            {
+                model.Items.Add(new RainsAdItemsModel { Name = model.Tilte5, Link = model.Link5, PictureId = model.PictureId5, PictureUrl = picUrl });
+            }
+
+            picUrl = GetPictureUrl(model.PictureId6);
+            //名称或者图片其中一个必须要有值
+            if (!string.IsNullOrEmpty(picUrl) || !string.IsNullOrEmpty(model.Tilte6))
+            {
+                model.Items.Add(new RainsAdItemsModel { Name = model.Tilte6, Link = model.Link6, PictureId = model.PictureId6, PictureUrl = picUrl });
+            }
+
+            picUrl = GetPictureUrl(model.PictureId7);
+            //名称或者图片其中一个必须要有值
+            if (!string.IsNullOrEmpty(picUrl) || !string.IsNullOrEmpty(model.Tilte7))
+            {
+                model.Items.Add(new RainsAdItemsModel { Name = model.Tilte7, Link = model.Link7, PictureId = model.PictureId7, PictureUrl = picUrl });
+            }
+
+            if (model.Items.Count <= 0)
                 //no pictures uploaded
                 return Content("");
 
-
-            return View("Nop.Plugin.Widgets.RainsAd.Views.WidgetsRainsAd.PublicInfo", model);
+            //地址
+            //本项目的views或者
+            //使用的皮肤下Nop.Web\Themes\皮肤名称\Views\WidgetsRainsAd\Nop.Plugin.Widgets.RainsAd.Views.WidgetsRainsAd.PublicInfo.使用的名称.cshtml
+            return View("Nop.Plugin.Widgets.RainsAd.Views.WidgetsRainsAd.PublicInfo." + widgetZone, model);
         }
 
         #region  插件内部的action
@@ -199,34 +328,11 @@ namespace Nop.Plugin.Widgets.RainsAd.Controllers
             return Json(gridModel);
         }
 
-        [HttpPost]
-        public ActionResult RainsAdsInfoList(DataSourceRequest command, RainsAdsListModel model)
+        public ActionResult RainsAdUpdate(int Id)
         {
-            //if (!_permissionService.Authorize(StandardPermissionProvider.ManagePlugins))
-            //    return Content("Access denied");
-
-            var ads = _rainsAdService.GetAllRainsAdsInfo(
-                pageIndex: command.Page - 1,
-                pageSize: command.PageSize);
-
-            var gridModel = new DataSourceResult
-            {
-                Data = ads.Select(x =>
-                {
-                    var entityModel = x.ToModel();
-                    return entityModel;
-                }),
-                Total = ads.TotalCount
-            };
-
-            return Json(gridModel);
-        }
-
-        public ActionResult RainsAdUpdate(int adId)
-        {
-            if (adId <= 0)
+            if (Id <= 0)
                 return RedirectToAction("Configure");
-            var ad = _rainsAdService.GetAdById(adId);
+            var ad = _rainsAdService.GetAdById(Id);
             if (null == ad)
             {
                 return RedirectToAction("Configure");
@@ -274,6 +380,94 @@ namespace Nop.Plugin.Widgets.RainsAd.Controllers
             PrepareRainsAdModel(model);
 
             return View("Nop.Plugin.Widgets.RainsAd.Views.WidgetsRainsAd.CreateAd", model);
+        }
+
+
+        [HttpPost]
+        public ActionResult RainsAdsInfoList(DataSourceRequest command, RainsAdsListModel model)
+        {
+            //if (!_permissionService.Authorize(StandardPermissionProvider.ManagePlugins))
+            //    return Content("Access denied");
+
+            var ads = _rainsAdService.GetAllRainsAdsInfo(
+                pageIndex: command.Page - 1,
+                pageSize: command.PageSize);
+
+            var gridModel = new DataSourceResult
+            {
+                Data = ads.Select(x =>
+                {
+                    var entityModel = x.ToModel();
+                    return entityModel;
+                }),
+                Total = ads.TotalCount
+            };
+
+            return Json(gridModel);
+        }
+
+
+        public ActionResult RainsAdInfoUpdate(int Id)
+        {
+            if (Id <= 0)
+                return RedirectToAction("Configure");
+            var ad = _rainsAdService.GetAdInfoById(Id);
+            if (null == ad)
+            {
+                return RedirectToAction("Configure");
+            }
+            RainsAdsInfoModel model = ad.ToModel();
+            //RainsAdsInfoModel model = ToModelInfo(ad);
+
+            return View("Nop.Plugin.Widgets.RainsAd.Views.WidgetsRainsAd.RainsAdInfoUpdate", model);
+        }
+
+        [HttpPost]
+        public ActionResult RainsAdInfoUpdate(string btnId, string formId, RainsAdsInfoModel model)
+        {
+            var ad = _rainsAdService.GetAdInfoById(model.Id);
+            if (ad == null)
+                //No category found with the specified id
+                return RedirectToAction("Configure");
+            model.CreatedOn = ad.CreatedOn;
+
+            ad = model.ToEntity(ad);
+            // ad = ToEntityInfo(model);
+            //update需要对当前entity做修改
+            ad.UpdatedOn = DateTime.UtcNow;
+            _rainsAdService.UpdateRainsAdInfo(ad);
+
+
+            ViewBag.RefreshPage = true;
+            ViewBag.btnId = btnId;
+            ViewBag.formId = formId;
+
+            return View("Nop.Plugin.Widgets.RainsAd.Views.WidgetsRainsAd.RainsAdInfoUpdate", model);
+        }
+
+        public ActionResult CreateAdInfo()
+        {
+            RainsAdsInfoModel model = new RainsAdsInfoModel();
+
+            return View("Nop.Plugin.Widgets.RainsAd.Views.WidgetsRainsAd.CreateAdInfo", model);
+        }
+        [HttpPost]
+        public ActionResult CreateAdInfo(string btnId, string formId, RainsAdsInfoModel model, bool continueEditing = false)
+        {
+            ViewBag.RefreshPage = true;
+            ViewBag.btnId = btnId;
+            ViewBag.formId = formId;
+
+            var rainsAd = model.ToEntity();//假如这个不行
+            //var rainsAd = ToEntityInfo(model);
+            rainsAd.CreatedOn = DateTime.UtcNow;
+            rainsAd.UpdatedOn = DateTime.UtcNow;
+
+            _rainsAdService.InsertRainsAdInfo(rainsAd);
+
+            //return RedirectToAction("RainsAdInfoUpdate", new { id = rainsAd.Id });
+
+            return View("Nop.Plugin.Widgets.RainsAd.Views.WidgetsRainsAd.CreateAdInfo", model);
         }
         #endregion
     }

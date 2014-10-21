@@ -208,6 +208,9 @@
     <None Include="packages.config" />
     <EmbeddedResource Include="Views\WidgetsRainsAd\RainsAdUpdate.cshtml" />
     <EmbeddedResource Include="Views\WidgetsRainsAd\CreateAd.cshtml" />
+    <EmbeddedResource Include="Views\WidgetsRainsAd\CreateAdInfo.cshtml" />
+    <EmbeddedResource Include="Views\WidgetsRainsAd\RainsAdInfoUpdate.cshtml" />
+    <EmbeddedResource Include="Views\WidgetsRainsAd\_CreateOrUpdateRainsAdInfo.cshtml" />
     <None Include="web.config" />
   </ItemGroup>
   <ItemGroup>

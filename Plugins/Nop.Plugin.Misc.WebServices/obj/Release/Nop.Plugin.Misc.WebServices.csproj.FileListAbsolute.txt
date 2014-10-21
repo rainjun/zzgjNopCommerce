@@ -7,3 +7,12 @@ E:\nonopCommerce\nopCommerce_3.30_Source\Presentation\Nop.Web\Plugins\Misc.WebSe
 E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.Misc.WebServices\obj\Release\Nop.Plugin.Misc.WebServices.dll
 E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.Misc.WebServices\obj\Release\Nop.Plugin.Misc.WebServices.pdb
 E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.Misc.WebServices\obj\Release\Nop.Plugin.Misc.WebServices.csprojResolveAssemblyReference.cache
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Misc.WebServices\Description.txt
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Misc.WebServices\logo.jpg
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Misc.WebServices\Remote\NopService.svc
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Misc.WebServices\Remote\web.config
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Misc.WebServices\Nop.Plugin.Misc.WebServices.dll
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Misc.WebServices\Nop.Plugin.Misc.WebServices.pdb
+I:\nonopCommerce\zzgj\source\githubSource\Plugins\Nop.Plugin.Misc.WebServices\obj\Release\Nop.Plugin.Misc.WebServices.csprojResolveAssemblyReference.cache
+I:\nonopCommerce\zzgj\source\githubSource\Plugins\Nop.Plugin.Misc.WebServices\obj\Release\Nop.Plugin.Misc.WebServices.dll
+I:\nonopCommerce\zzgj\source\githubSource\Plugins\Nop.Plugin.Misc.WebServices\obj\Release\Nop.Plugin.Misc.WebServices.pdb

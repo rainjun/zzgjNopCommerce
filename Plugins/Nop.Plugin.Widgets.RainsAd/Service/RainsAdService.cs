@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Nop.Core;
+using Nop.Core.Caching;
 using Nop.Core.Data;
 using Nop.Plugin.Widgets.RainsAd.Domain;
 using Nop.Plugin.Widgets.RainsAd.Infrastructure.Cache;
-using Nop.Core.Caching;
 using Nop.Services.Media;
-using Nop.Core;
 
 namespace Nop.Plugin.Widgets.RainsAd.Services
 {
@@ -21,6 +21,38 @@ namespace Nop.Plugin.Widgets.RainsAd.Services
         private readonly IRepository<RainsAdsInfo> _rainAdInfoRepository;
         private readonly ICacheManager _cacheManager;
         private readonly IPictureService _pictureService;
+
+
+        /// <summary>
+        /// Key pattern to clear cache
+        /// </summary>
+        private const string RAINSAD_PATTERN_KEY = "Nop.Widgets.RainsAd";
+        /// <summary>
+        /// Key for caching
+        /// </summary>
+        /// <remarks>
+        /// {0} : rainsadinfo ID
+        /// </remarks>
+        private const string RAINSAD_INFO_BY_ID_KEY = "Nop.Widgets.RainsAd.RainsAdinfo.id-{0}";
+
+        /// <summary>
+        /// Key for caching
+        /// </summary>
+        /// <remarks>
+        /// {0} : rainsadinfo ID
+        /// </remarks>
+        private const string RAINSAD_INFO_BY_WIDGETZONE_KEY = "Nop.Widgets.RainsAd.RainsAdinfo.widgetzone-{0}";
+
+
+        /// <summary>
+        /// Key for GetChildCategoryIds method results caching
+        /// </summary>
+        /// <remarks>
+        /// {0} : parent category id
+        /// {2} : comma separated list of customer roles
+        /// {3} : current store ID
+        /// </remarks>
+        private const string RAINSAD_ALL_WIDGETZONES_KEY = "Nop.Widgets.RainsAd.WidgetZones";
 
         #endregion
 
@@ -204,25 +236,29 @@ namespace Nop.Plugin.Widgets.RainsAd.Services
         /// <param name="pageIndex"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
-        public IList<string> GetWidgetZons(int pageIndex = 0, int pageSize = int.MaxValue)
+        public IList<string> GetWidgetZons()
         {
-            var allAdsInfo = GetAllRainsAdsInfo();
-            List<string> wgzResult = new List<string>();
-            foreach (var adInfo in allAdsInfo)
+            string key = RAINSAD_ALL_WIDGETZONES_KEY;
+            return _cacheManager.Get(key, () =>
             {
-                if (!String.IsNullOrEmpty(adInfo.WidgetZone))
+                var allAdsInfo = GetAllRainsAdsInfo();
+                List<string> wgzResult = new List<string>();
+                foreach (var adInfo in allAdsInfo)
                 {
-                    wgzResult.Add(adInfo.WidgetZone);
+                    if (!String.IsNullOrEmpty(adInfo.WidgetZone))
+                    {
+                        wgzResult.Add(adInfo.WidgetZone);
+                    }
                 }
-            }
-            if (null != wgzResult && 0 < wgzResult.Count)
-            {
-                return wgzResult;
-            }
-            else
-            {
-                return null;
-            }
+                if (null != wgzResult && 0 < wgzResult.Count)
+                {
+                    return wgzResult;
+                }
+                else
+                {
+                    return null;
+                }
+            });
         }
 
         public IPagedList<RainsAdsInfo> GetAllRainsAdsInfo(int pageIndex = 0, int pageSize = int.MaxValue)
@@ -240,6 +276,9 @@ namespace Nop.Plugin.Widgets.RainsAd.Services
                 throw new ArgumentNullException("rainsAdInfo");
 
             _rainAdInfoRepository.Delete(rainsAdInfo);
+
+            //cache
+            _cacheManager.RemoveByPattern(RAINSAD_PATTERN_KEY);
         }
 
         public void InsertRainsAdInfo(RainsAdsInfo rainsAdInfo)
@@ -248,6 +287,9 @@ namespace Nop.Plugin.Widgets.RainsAd.Services
                 throw new ArgumentNullException("rainsAdInfo");
 
             _rainAdInfoRepository.Insert(rainsAdInfo);
+
+            //cache
+            _cacheManager.RemoveByPattern(RAINSAD_PATTERN_KEY);
         }
 
         public void UpdateRainsAdInfo(RainsAdsInfo rainsAdInfo)
@@ -256,6 +298,9 @@ namespace Nop.Plugin.Widgets.RainsAd.Services
                 throw new ArgumentNullException("rainsAdInfo");
 
             _rainAdInfoRepository.Update(rainsAdInfo);
+
+            //cache
+            _cacheManager.RemoveByPattern(RAINSAD_PATTERN_KEY);
         }
 
         public RainsAdsInfo GetAdInfoById(int rainsAdInfoId)
@@ -263,7 +308,25 @@ namespace Nop.Plugin.Widgets.RainsAd.Services
             if (rainsAdInfoId == 0)
                 return null;
 
-            return _rainAdInfoRepository.GetById(rainsAdInfoId);
+            string key = string.Format(RAINSAD_INFO_BY_ID_KEY, rainsAdInfoId);
+            return _cacheManager.Get(key, () => { return _rainAdInfoRepository.GetById(rainsAdInfoId); });
+        }
+
+        public RainsAdsInfo GetAdInfoByWG(string widgetZone)
+        {
+            if (string.IsNullOrEmpty(widgetZone))
+                return null;
+
+            string key = string.Format(RAINSAD_INFO_BY_WIDGETZONE_KEY, widgetZone);
+            return _cacheManager.Get(key, () =>
+            {
+                var query = from gp in _rainAdInfoRepository.Table
+                            where gp.WidgetZone.Equals(widgetZone)
+                            orderby gp.UpdatedOn descending
+                            select gp;
+
+                return query.FirstOrDefault();
+            });
         }
 
         #endregion

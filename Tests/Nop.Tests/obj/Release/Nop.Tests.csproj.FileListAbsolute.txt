@@ -14,3 +14,12 @@ E:\nonopCommerce\nopCommerce_3.30_Source\Tests\Nop.Tests\bin\Release\normnfkd.nl
 E:\nonopCommerce\nopCommerce_3.30_Source\Tests\Nop.Tests\obj\Release\Nop.Tests.csprojResolveAssemblyReference.cache
 E:\nonopCommerce\nopCommerce_3.30_Source\Tests\Nop.Tests\obj\Release\Nop.Tests.dll
 E:\nonopCommerce\nopCommerce_3.30_Source\Tests\Nop.Tests\obj\Release\Nop.Tests.pdb
+I:\nonopCommerce\zzgj\source\githubSource\Tests\Nop.Tests\bin\Release\Nop.Tests.dll
+I:\nonopCommerce\zzgj\source\githubSource\Tests\Nop.Tests\bin\Release\Nop.Tests.pdb
+I:\nonopCommerce\zzgj\source\githubSource\Tests\Nop.Tests\bin\Release\nunit.framework.dll
+I:\nonopCommerce\zzgj\source\githubSource\Tests\Nop.Tests\bin\Release\Rhino.Mocks.dll
+I:\nonopCommerce\zzgj\source\githubSource\Tests\Nop.Tests\bin\Release\nunit.framework.xml
+I:\nonopCommerce\zzgj\source\githubSource\Tests\Nop.Tests\bin\Release\Rhino.Mocks.xml
+I:\nonopCommerce\zzgj\source\githubSource\Tests\Nop.Tests\obj\Release\Nop.Tests.csprojResolveAssemblyReference.cache
+I:\nonopCommerce\zzgj\source\githubSource\Tests\Nop.Tests\obj\Release\Nop.Tests.dll
+I:\nonopCommerce\zzgj\source\githubSource\Tests\Nop.Tests\obj\Release\Nop.Tests.pdb

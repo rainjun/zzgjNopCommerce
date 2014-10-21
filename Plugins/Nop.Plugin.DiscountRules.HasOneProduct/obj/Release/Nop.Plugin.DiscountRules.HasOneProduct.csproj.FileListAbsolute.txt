@@ -5,3 +5,10 @@ E:\nonopCommerce\nopCommerce_3.30_Source\Presentation\Nop.Web\Plugins\DiscountRu
 E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.DiscountRules.HasOneProduct\obj\Release\Nop.Plugin.DiscountRules.HasOneProduct.dll
 E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.DiscountRules.HasOneProduct\obj\Release\Nop.Plugin.DiscountRules.HasOneProduct.pdb
 E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.DiscountRules.HasOneProduct\obj\Release\Nop.Plugin.DiscountRules.HasOneProduct.csprojResolveAssemblyReference.cache
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\DiscountRules.HasOneProduct\Description.txt
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\DiscountRules.HasOneProduct\logo.jpg
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\DiscountRules.HasOneProduct\Nop.Plugin.DiscountRules.HasOneProduct.dll
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\DiscountRules.HasOneProduct\Nop.Plugin.DiscountRules.HasOneProduct.pdb
+I:\nonopCommerce\zzgj\source\githubSource\Plugins\Nop.Plugin.DiscountRules.HasOneProduct\obj\Release\Nop.Plugin.DiscountRules.HasOneProduct.csprojResolveAssemblyReference.cache
+I:\nonopCommerce\zzgj\source\githubSource\Plugins\Nop.Plugin.DiscountRules.HasOneProduct\obj\Release\Nop.Plugin.DiscountRules.HasOneProduct.dll
+I:\nonopCommerce\zzgj\source\githubSource\Plugins\Nop.Plugin.DiscountRules.HasOneProduct\obj\Release\Nop.Plugin.DiscountRules.HasOneProduct.pdb

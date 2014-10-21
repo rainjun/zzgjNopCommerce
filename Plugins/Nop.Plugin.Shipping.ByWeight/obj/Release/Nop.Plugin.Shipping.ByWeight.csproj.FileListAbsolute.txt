@@ -5,3 +5,10 @@ E:\nonopCommerce\nopCommerce_3.30_Source\Presentation\Nop.Web\Plugins\Shipping.B
 E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.Shipping.ByWeight\obj\Release\Nop.Plugin.Shipping.ByWeight.dll
 E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.Shipping.ByWeight\obj\Release\Nop.Plugin.Shipping.ByWeight.pdb
 E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.Shipping.ByWeight\obj\Release\Nop.Plugin.Shipping.ByWeight.csprojResolveAssemblyReference.cache
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Shipping.ByWeight\Description.txt
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Shipping.ByWeight\logo.jpg
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Shipping.ByWeight\Nop.Plugin.Shipping.ByWeight.dll
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Shipping.ByWeight\Nop.Plugin.Shipping.ByWeight.pdb
+I:\nonopCommerce\zzgj\source\githubSource\Plugins\Nop.Plugin.Shipping.ByWeight\obj\Release\Nop.Plugin.Shipping.ByWeight.csprojResolveAssemblyReference.cache
+I:\nonopCommerce\zzgj\source\githubSource\Plugins\Nop.Plugin.Shipping.ByWeight\obj\Release\Nop.Plugin.Shipping.ByWeight.dll
+I:\nonopCommerce\zzgj\source\githubSource\Plugins\Nop.Plugin.Shipping.ByWeight\obj\Release\Nop.Plugin.Shipping.ByWeight.pdb

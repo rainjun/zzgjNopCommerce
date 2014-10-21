@@ -5,3 +5,10 @@ E:\nonopCommerce\nopCommerce_3.30_Source\Presentation\Nop.Web\Plugins\SMS.Verizo
 E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.SMS.Verizon\obj\Release\Nop.Plugin.SMS.Verizon.csprojResolveAssemblyReference.cache
 E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.SMS.Verizon\obj\Release\Nop.Plugin.SMS.Verizon.dll
 E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.SMS.Verizon\obj\Release\Nop.Plugin.SMS.Verizon.pdb
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\SMS.Verizon\Description.txt
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\SMS.Verizon\logo.jpg
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\SMS.Verizon\Nop.Plugin.SMS.Verizon.dll
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\SMS.Verizon\Nop.Plugin.SMS.Verizon.pdb
+I:\nonopCommerce\zzgj\source\githubSource\Plugins\Nop.Plugin.SMS.Verizon\obj\Release\Nop.Plugin.SMS.Verizon.csprojResolveAssemblyReference.cache
+I:\nonopCommerce\zzgj\source\githubSource\Plugins\Nop.Plugin.SMS.Verizon\obj\Release\Nop.Plugin.SMS.Verizon.dll
+I:\nonopCommerce\zzgj\source\githubSource\Plugins\Nop.Plugin.SMS.Verizon\obj\Release\Nop.Plugin.SMS.Verizon.pdb

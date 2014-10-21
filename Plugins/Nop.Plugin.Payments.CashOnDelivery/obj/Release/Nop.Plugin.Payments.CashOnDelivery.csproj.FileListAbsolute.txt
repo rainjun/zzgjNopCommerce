@@ -6,3 +6,11 @@ E:\nonopCommerce\nopCommerce_3.30_Source\Presentation\Nop.Web\Plugins\Payments.C
 E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.Payments.CashOnDelivery\obj\Release\Nop.Plugin.Payments.CashOnDelivery.csprojResolveAssemblyReference.cache
 E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.Payments.CashOnDelivery\obj\Release\Nop.Plugin.Payments.CashOnDelivery.dll
 E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.Payments.CashOnDelivery\obj\Release\Nop.Plugin.Payments.CashOnDelivery.pdb
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\Description.txt
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\logo.jpg
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\logo2.jpg
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\Nop.Plugin.Payments.CashOnDelivery.dll
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\Nop.Plugin.Payments.CashOnDelivery.pdb
+I:\nonopCommerce\zzgj\source\githubSource\Plugins\Nop.Plugin.Payments.CashOnDelivery\obj\Release\Nop.Plugin.Payments.CashOnDelivery.csprojResolveAssemblyReference.cache
+I:\nonopCommerce\zzgj\source\githubSource\Plugins\Nop.Plugin.Payments.CashOnDelivery\obj\Release\Nop.Plugin.Payments.CashOnDelivery.dll
+I:\nonopCommerce\zzgj\source\githubSource\Plugins\Nop.Plugin.Payments.CashOnDelivery\obj\Release\Nop.Plugin.Payments.CashOnDelivery.pdb

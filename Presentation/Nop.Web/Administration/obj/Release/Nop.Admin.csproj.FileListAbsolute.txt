@@ -3,3 +3,8 @@ E:\nonopCommerce\nopCommerce_3.30_Source\Presentation\Nop.Web\bin\Nop.Admin.pdb
 E:\nonopCommerce\nopCommerce_3.30_Source\Presentation\Nop.Web\Administration\obj\Release\Nop.Admin.csprojResolveAssemblyReference.cache
 E:\nonopCommerce\nopCommerce_3.30_Source\Presentation\Nop.Web\Administration\obj\Release\Nop.Admin.dll
 E:\nonopCommerce\nopCommerce_3.30_Source\Presentation\Nop.Web\Administration\obj\Release\Nop.Admin.pdb
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\bin\Nop.Admin.dll
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\bin\Nop.Admin.pdb
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Administration\obj\Release\Nop.Admin.csprojResolveAssemblyReference.cache
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Administration\obj\Release\Nop.Admin.dll
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Administration\obj\Release\Nop.Admin.pdb

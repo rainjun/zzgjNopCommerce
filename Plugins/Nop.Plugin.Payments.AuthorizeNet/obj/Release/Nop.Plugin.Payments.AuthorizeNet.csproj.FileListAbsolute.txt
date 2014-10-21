@@ -6,3 +6,11 @@ E:\nonopCommerce\nopCommerce_3.30_Source\Presentation\Nop.Web\Plugins\Payments.A
 E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.Payments.AuthorizeNet\obj\Release\Nop.Plugin.Payments.AuthorizeNet.dll
 E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.Payments.AuthorizeNet\obj\Release\Nop.Plugin.Payments.AuthorizeNet.pdb
 E:\nonopCommerce\nopCommerce_3.30_Source\Plugins\Nop.Plugin.Payments.AuthorizeNet\obj\Release\Nop.Plugin.Payments.AuthorizeNet.csprojResolveAssemblyReference.cache
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Payments.AuthorizeNet\Description.txt
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Payments.AuthorizeNet\logo.jpg
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Payments.AuthorizeNet\Nop.Plugin.Payments.AuthorizeNet.dll.config
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Payments.AuthorizeNet\Nop.Plugin.Payments.AuthorizeNet.dll
+I:\nonopCommerce\zzgj\source\githubSource\Presentation\Nop.Web\Plugins\Payments.AuthorizeNet\Nop.Plugin.Payments.AuthorizeNet.pdb
+I:\nonopCommerce\zzgj\source\githubSource\Plugins\Nop.Plugin.Payments.AuthorizeNet\obj\Release\Nop.Plugin.Payments.AuthorizeNet.csprojResolveAssemblyReference.cache
+I:\nonopCommerce\zzgj\source\githubSource\Plugins\Nop.Plugin.Payments.AuthorizeNet\obj\Release\Nop.Plugin.Payments.AuthorizeNet.dll
+I:\nonopCommerce\zzgj\source\githubSource\Plugins\Nop.Plugin.Payments.AuthorizeNet\obj\Release\Nop.Plugin.Payments.AuthorizeNet.pdb

@@ -9,7 +9,7 @@
     var gridPageSize = EngineContext.Current.Resolve<Nop.Core.Domain.Common.AdminAreaSettings>().GridPageSize;
 }
 @Html.Action("StoreScopeConfiguration", "Setting", new { area = "Admin" })
-@using (Html.BeginForm())
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "widgets-rainsad-form" }))
 {
     <table class="adminContent">
         <tr>
@@ -25,7 +25,7 @@
             @T("Admin.RainsAd.RainsAd")
         </div>
         <div class="options">
-            <a href="@Url.RouteUrl("Plugin.Widgets.RainsAd.CreateAdInfo")" class="k-button">@T("Admin.Common.AddNew")</a>
+            <a href="javascript:void(0)" onclick="javascript:OpenWindow('@Url.RouteUrl("Plugin.Widgets.RainsAd.CreateAdInfo")?btnId=btnSearch&formId=widgets-rainsad-form', 800, 400, true); return false;" class="k-button">@T("Admin.Common.AddNew")</a>
             @*<a href="@Url.RouteUrl("Plugin.Widgets.RainsAd.WidgetZones")" class="k-button">@T("Admin.RainsAd.WidgetZones")</a>*@
         </div>
     </div>
@@ -129,7 +129,7 @@
                                     field: "Id",
                                     title: "@T("Admin.Common.Edit")",
                                     width: 100,
-                                    template: '<a href="@Url.RouteUrl("Plugin.Widgets.RainsAd.RainsAdInfoUpdate")?adid=#=Id#">@T("Admin.Common.Edit")</a>'
+                                    template: "<input type='submit' value='@T("Admin.Common.Edit")' onclick=\"javascript:OpenWindow('@Url.RouteUrl("Plugin.Widgets.RainsAd.RainsAdInfoUpdate")?id=#=Id#&btnId=btnRefresh&formId=widgets-rainsad-form', 800, 400, true); return false;\" class='k-button' />"
                                 }
                             ]
                         } );
