@@ -494,6 +494,15 @@
     </tr>
     <tr>
         <td class="adminTitle">
+            @Html.NopLabelFor(model => model.CommissionRatio):
+        </td>
+        <td class="adminData">
+            @Html.EditorFor(model => model.CommissionRatio) [@Model.PrimaryStoreCurrencyCode]
+            @Html.ValidationMessageFor(model => model.CommissionRatio)
+        </td>
+    </tr>
+    <tr>
+        <td class="adminTitle">
             @Html.NopLabelFor(model => model.SpecialPrice):
         </td>
         <td class="adminData">

@@ -11,12 +11,25 @@ namespace Nop.Core.Domain.Commissions
     /// </summary>
     public enum CommissionListType : int
     {
+        /*
+         *o => o.CommissionStatusId == (int)CommissionStatus.Pending
+         *                && o.OrderStatusId == (int)OrderStatus.Complete
+         *                && o.CreatedOnUtc < firstDayOfThisMonth
+         */
         /// <summary>
-        /// Pending
+        /// 佣金未结算，而且订单已经完成（已确认收货），而且是上月的创建的
+        /// 
         /// </summary>
         Order = 10,
+        /*
+         * o => o.CommissionStatusId == (int)CommissionStatus.Pending
+         *               && (o.OrderStatusId == (int)OrderStatus.Pending
+         *                   || o.OrderStatusId == (int)OrderStatus.Processing
+         *                   || (o.OrderStatusId == (int)OrderStatus.Complete
+         *                   && o.CreatedOnUtc >= firstDayOfThisMonth))
+         */
         /// <summary>
-        /// Processing
+        /// 佣金未结算
         /// </summary>
         New = 20
     }

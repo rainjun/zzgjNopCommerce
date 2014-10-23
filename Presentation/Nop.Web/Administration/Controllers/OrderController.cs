@@ -34,17 +34,18 @@ using Nop.Web.Framework.Controllers;
 using Nop.Web.Framework.Kendoui;
 using Nop.Web.Framework.Mvc;
 using Nop.Core.Domain.Commissions;
+using Nop.Admin.Models.Common;
 
 namespace Nop.Admin.Controllers
 {
-	public partial class OrderController : BaseAdminController
+    public partial class OrderController : BaseAdminController
     {
         #region Fields
 
         private readonly IOrderService _orderService;
         private readonly IOrderReportService _orderReportService;
         private readonly IOrderProcessingService _orderProcessingService;
-	    private readonly IPriceCalculationService _priceCalculationService;
+        private readonly IPriceCalculationService _priceCalculationService;
         private readonly IDateTimeHelper _dateTimeHelper;
         private readonly IPriceFormatter _priceFormatter;
         private readonly IDiscountService _discountService;
@@ -61,12 +62,12 @@ namespace Nop.Admin.Controllers
         private readonly IProductService _productService;
         private readonly IExportManager _exportManager;
         private readonly IPermissionService _permissionService;
-	    private readonly IWorkflowMessageService _workflowMessageService;
-	    private readonly ICategoryService _categoryService;
+        private readonly IWorkflowMessageService _workflowMessageService;
+        private readonly ICategoryService _categoryService;
         private readonly IManufacturerService _manufacturerService;
-	    private readonly IProductAttributeService _productAttributeService;
-	    private readonly IProductAttributeParser _productAttributeParser;
-	    private readonly IProductAttributeFormatter _productAttributeFormatter;
+        private readonly IProductAttributeService _productAttributeService;
+        private readonly IProductAttributeParser _productAttributeParser;
+        private readonly IProductAttributeFormatter _productAttributeFormatter;
         private readonly IShoppingCartService _shoppingCartService;
         private readonly IGiftCardService _giftCardService;
         private readonly IDownloadService _downloadService;
@@ -80,13 +81,13 @@ namespace Nop.Admin.Controllers
         private readonly MeasureSettings _measureSettings;
         private readonly PdfSettings _pdfSettings;
         private readonly AddressSettings _addressSettings;
-        
+
         #endregion
 
         #region Ctor
 
-        public OrderController(IOrderService orderService, 
-            IOrderReportService orderReportService, 
+        public OrderController(IOrderService orderService,
+            IOrderReportService orderReportService,
             IOrderProcessingService orderProcessingService,
             IPriceCalculationService priceCalculationService,
             IDateTimeHelper dateTimeHelper,
@@ -106,24 +107,24 @@ namespace Nop.Admin.Controllers
             IExportManager exportManager,
             IPermissionService permissionService,
             IWorkflowMessageService workflowMessageService,
-            ICategoryService categoryService, 
+            ICategoryService categoryService,
             IManufacturerService manufacturerService,
-            IProductAttributeService productAttributeService, 
+            IProductAttributeService productAttributeService,
             IProductAttributeParser productAttributeParser,
-            IProductAttributeFormatter productAttributeFormatter, 
+            IProductAttributeFormatter productAttributeFormatter,
             IShoppingCartService shoppingCartService,
-            IGiftCardService giftCardService, 
+            IGiftCardService giftCardService,
             IDownloadService downloadService,
-            IShipmentService shipmentService, 
-            IStoreService storeService, 
+            IShipmentService shipmentService,
+            IStoreService storeService,
             IVendorService vendorService,
-            CatalogSettings catalogSettings, 
-            CurrencySettings currencySettings, 
+            CatalogSettings catalogSettings,
+            CurrencySettings currencySettings,
             TaxSettings taxSettings,
-            MeasureSettings measureSettings, 
-            PdfSettings pdfSettings, 
+            MeasureSettings measureSettings,
+            PdfSettings pdfSettings,
             AddressSettings addressSettings)
-		{
+        {
             this._orderService = orderService;
             this._orderReportService = orderReportService;
             this._orderProcessingService = orderProcessingService;
@@ -163,8 +164,8 @@ namespace Nop.Admin.Controllers
             this._measureSettings = measureSettings;
             this._pdfSettings = pdfSettings;
             this._addressSettings = addressSettings;
-		}
-        
+        }
+
         #endregion
 
         #region Utilities
@@ -251,7 +252,7 @@ namespace Nop.Admin.Controllers
             model.AffiliateId = order.AffiliateId;
             //a vendor should have access only to his products
             model.IsLoggedInAsVendor = _workContext.CurrentVendor != null;
-            
+
             #region Order totals
 
             var primaryStoreCurrency = _currencyService.GetCurrencyById(_currencySettings.PrimaryStoreCurrencyId);
@@ -407,7 +408,7 @@ namespace Nop.Admin.Controllers
             model.CanPartiallyRefundOffline = _orderProcessingService.CanPartiallyRefundOffline(order, decimal.Zero);
             model.CanVoid = _orderProcessingService.CanVoid(order);
             model.CanVoidOffline = _orderProcessingService.CanVoidOffline(order);
-            
+
             model.PrimaryStoreCurrencyCode = _currencyService.GetCurrencyById(_currencySettings.PrimaryStoreCurrencyId).CurrencyCode;
             model.MaxAmountToRefund = order.OrderTotal - order.RefundedAmount;
 
@@ -676,6 +677,59 @@ namespace Nop.Admin.Controllers
             return model;
         }
 
+
+        /// <summary>
+        /// rainAdd
+        /// 为customerModel的地区信息做预处理
+        /// </summary>
+        /// <param name="model"></param>
+        [NonAction]
+        private void PrePareAddressModelAreaInfo(AddressModel model)
+        {
+
+            {
+                model.AvailableCountries.Add(new SelectListItem() { Text = _localizationService.GetResource("Admin.Address.SelectCountry"), Value = "-1" });
+                foreach (var c in _countryService.GetAllCountries(true))
+                {
+                    model.AvailableCountries.Add(new SelectListItem() { Text = c.Name, Value = c.Id.ToString() });
+                }
+
+                {
+                    //states
+                    //rainChange 修改为获取上级ID为0的信息
+                    var states = _stateProvinceService.GetMyProvinces().ToList();
+                    model.AvailableStates.Add(new SelectListItem() { Text = _localizationService.GetResource("Address.Select"), Value = "-1" });
+                    if (states.Count > 0)
+                    {
+                        foreach (var s in states)
+                            model.AvailableStates.Add(new SelectListItem() { Text = s.GetLocalized(x => x.Name), Value = s.Id.ToString(), Selected = (s.Id == model.StateProvinceId) });
+                    }
+
+                    model.AvailableCities.Add(new SelectListItem() { Text = _localizationService.GetResource("Address.Select"), Value = "-1" });
+                    if (model.StateProvinceId > 0)
+                    {
+                        var cities = _stateProvinceService.GetStateProvincesByParendId((int)model.StateProvinceId).ToList();
+                        if (cities.Count > 0)
+                        {
+                            foreach (var s in cities)
+                                model.AvailableCities.Add(new SelectListItem() { Text = s.GetLocalized(x => x.Name), Value = s.Id.ToString(), Selected = (s.Id == model.CityId) });
+                        }
+                    }
+
+                    model.AvailableDistricts.Add(new SelectListItem() { Text = _localizationService.GetResource("Address.Select"), Value = "-1" });
+                    if (model.CityId > 0)
+                    {
+                        var districts = _stateProvinceService.GetStateProvincesByParendId((int)model.CityId).ToList();
+                        if (districts.Count > 0)
+                        {
+                            foreach (var s in districts)
+                                model.AvailableDistricts.Add(new SelectListItem() { Text = s.GetLocalized(x => x.Name), Value = s.Id.ToString(), Selected = (s.Id == model.DistrictId) });
+                        }
+                    }
+                }
+            }
+        }
+
         #endregion
 
         #region Order list
@@ -717,10 +771,10 @@ namespace Nop.Admin.Controllers
             model.IsLoggedInAsVendor = _workContext.CurrentVendor != null;
 
             return View(model);
-		}
+        }
 
-		[HttpPost]
-		public ActionResult OrderList(DataSourceRequest command, OrderListModel model)
+        [HttpPost]
+        public ActionResult OrderList(DataSourceRequest command, OrderListModel model)
         {
             if (!_permissionService.Authorize(StandardPermissionProvider.ManageOrders))
                 return AccessDeniedView();
@@ -734,8 +788,8 @@ namespace Nop.Admin.Controllers
             DateTime? startDateValue = (model.StartDate == null) ? null
                             : (DateTime?)_dateTimeHelper.ConvertToUtcTime(model.StartDate.Value, _dateTimeHelper.CurrentTimeZone);
 
-            DateTime? endDateValue = (model.EndDate == null) ? null 
-                            :(DateTime?)_dateTimeHelper.ConvertToUtcTime(model.EndDate.Value, _dateTimeHelper.CurrentTimeZone).AddDays(1);
+            DateTime? endDateValue = (model.EndDate == null) ? null
+                            : (DateTime?)_dateTimeHelper.ConvertToUtcTime(model.EndDate.Value, _dateTimeHelper.CurrentTimeZone).AddDays(1);
 
             OrderStatus? orderStatus = model.OrderStatusId > 0 ? (OrderStatus?)(model.OrderStatusId) : null;
             PaymentStatus? paymentStatus = model.PaymentStatusId > 0 ? (PaymentStatus?)(model.PaymentStatusId) : null;
@@ -770,10 +824,10 @@ namespace Nop.Admin.Controllers
 
             //summary report
             var reportSummary = _orderReportService.GetOrderAverageReportLine(model.StoreId,
-                model.VendorId, orderStatus,  paymentStatus, shippingStatus, 
+                model.VendorId, orderStatus, paymentStatus, shippingStatus,
                 startDateValue, endDateValue, model.CustomerEmail);
-            var profit = _orderReportService.ProfitReport(model.StoreId, 
-                model.VendorId, orderStatus, paymentStatus, shippingStatus, 
+            var profit = _orderReportService.ProfitReport(model.StoreId,
+                model.VendorId, orderStatus, paymentStatus, shippingStatus,
                 startDateValue, endDateValue, model.CustomerEmail);
             var primaryStoreCurrency = _currencyService.GetCurrencyById(_currencySettings.PrimaryStoreCurrencyId);
             if (primaryStoreCurrency == null)
@@ -786,12 +840,12 @@ namespace Nop.Admin.Controllers
                 aggregatortax = _priceFormatter.FormatPrice(reportSummary.SumTax, true, false),
                 aggregatortotal = _priceFormatter.FormatPrice(reportSummary.SumOrders, true, false)
             };
-			return new JsonResult
-			{
-				Data = gridModel
-			};
-		}
-        
+            return new JsonResult
+            {
+                Data = gridModel
+            };
+        }
+
         [HttpPost, ActionName("List")]
         [FormValueRequired("go-to-order-by-number")]
         public ActionResult GoToOrderId(OrderListModel model)
@@ -853,7 +907,7 @@ namespace Nop.Admin.Controllers
             return new XmlDownloadResult(xml, "orders.xml");
         }
 
-	    public ActionResult ExportExcelAll()
+        public ActionResult ExportExcelAll()
         {
             if (!_permissionService.Authorize(StandardPermissionProvider.ManageOrders))
                 return AccessDeniedView();
@@ -865,7 +919,7 @@ namespace Nop.Admin.Controllers
             try
             {
                 var orders = _orderService.SearchOrders();
-                
+
                 byte[] bytes = null;
                 using (var stream = new MemoryStream())
                 {
@@ -1152,7 +1206,7 @@ namespace Nop.Admin.Controllers
                 return View(model);
             }
         }
-        
+
         public ActionResult PartiallyRefundOrderPopup(int id, bool online)
         {
             if (!_permissionService.Authorize(StandardPermissionProvider.ManageOrders))
@@ -1467,7 +1521,7 @@ namespace Nop.Admin.Controllers
 
             return View(model);
         }
-        
+
         [HttpPost, ActionName("Edit")]
         [FormValueRequired(FormValueRequirement.StartsWith, "btnSaveOrderItem")]
         [ValidateInput(false)]
@@ -1496,7 +1550,7 @@ namespace Nop.Admin.Controllers
                 throw new ArgumentException("No order item found with the specified id");
 
 
-            decimal unitPriceInclTax, unitPriceExclTax, discountInclTax, discountExclTax,priceInclTax,priceExclTax;
+            decimal unitPriceInclTax, unitPriceExclTax, discountInclTax, discountExclTax, priceInclTax, priceExclTax;
             int quantity;
             if (!decimal.TryParse(form["pvUnitPriceInclTax" + orderItemId], out unitPriceInclTax))
                 unitPriceInclTax = orderItem.UnitPriceInclTax;
@@ -1811,11 +1865,11 @@ namespace Nop.Admin.Controllers
                 return Content("");
 
             var gridModel = new DataSourceResult();
-            var products = _productService.SearchProducts(categoryIds: new List<int>() {model.SearchCategoryId},
+            var products = _productService.SearchProducts(categoryIds: new List<int>() { model.SearchCategoryId },
                 manufacturerId: model.SearchManufacturerId,
                 productType: model.SearchProductTypeId > 0 ? (ProductType?)model.SearchProductTypeId : null,
-                keywords: model.SearchProductName, 
-                pageIndex: command.Page - 1, 
+                keywords: model.SearchProductName,
+                pageIndex: command.Page - 1,
                 pageSize: command.PageSize,
                 showHidden: true);
             gridModel.Data = products.Select(x =>
@@ -1823,7 +1877,7 @@ namespace Nop.Admin.Controllers
                 var productModel = new OrderModel.AddOrderProductModel.ProductModel()
                 {
                     Id = x.Id,
-                    Name =  x.Name,
+                    Name = x.Name,
                     Sku = x.Sku,
                 };
 
@@ -2154,19 +2208,8 @@ namespace Nop.Admin.Controllers
             model.Address.FaxEnabled = _addressSettings.FaxEnabled;
             model.Address.FaxRequired = _addressSettings.FaxRequired;
 
-            //countries
-            model.Address.AvailableCountries.Add(new SelectListItem() { Text = _localizationService.GetResource("Admin.Address.SelectCountry"), Value = "0" });
-            foreach (var c in _countryService.GetAllCountries(true))
-                model.Address.AvailableCountries.Add(new SelectListItem() { Text = c.Name, Value = c.Id.ToString(), Selected = (c.Id == address.CountryId) });
-            //states
-            var states = address.Country != null ? _stateProvinceService.GetStateProvincesByCountryId(address.Country.Id, true).ToList() : new List<StateProvince>();
-            if (states.Count > 0)
-            {
-                foreach (var s in states)
-                    model.Address.AvailableStates.Add(new SelectListItem() { Text = s.Name, Value = s.Id.ToString(), Selected = (s.Id == address.StateProvinceId) });
-            }
-            else
-                model.Address.AvailableStates.Add(new SelectListItem() { Text = _localizationService.GetResource("Admin.Address.OtherNonUS"), Value = "0" });
+            //rainChange 增加省市区的适配
+            PrePareAddressModelAreaInfo(model.Address);
 
             return View(model);
         }
@@ -2223,25 +2266,15 @@ namespace Nop.Admin.Controllers
             model.Address.PhoneRequired = _addressSettings.PhoneRequired;
             model.Address.FaxEnabled = _addressSettings.FaxEnabled;
             model.Address.FaxRequired = _addressSettings.FaxRequired;
-            //countries
-            model.Address.AvailableCountries.Add(new SelectListItem() { Text = _localizationService.GetResource("Admin.Address.SelectCountry"), Value = "0" });
-            foreach (var c in _countryService.GetAllCountries(true))
-                model.Address.AvailableCountries.Add(new SelectListItem() { Text = c.Name, Value = c.Id.ToString(), Selected = (c.Id == address.CountryId) });
-            //states
-            var states = address.Country != null ? _stateProvinceService.GetStateProvincesByCountryId(address.Country.Id, true).ToList() : new List<StateProvince>();
-            if (states.Count > 0)
-            {
-                foreach (var s in states)
-                    model.Address.AvailableStates.Add(new SelectListItem() { Text = s.Name, Value = s.Id.ToString(), Selected = (s.Id == address.StateProvinceId) });
-            }
-            else
-                model.Address.AvailableStates.Add(new SelectListItem() { Text = _localizationService.GetResource("Admin.Address.OtherNonUS"), Value = "0" });
+
+            //rainChange 增加省市区的适配
+            PrePareAddressModelAreaInfo(model.Address);
 
             return View(model);
         }
 
         #endregion
-        
+
         #region Shipments
 
         public ActionResult ShipmentList()
@@ -2258,9 +2291,9 @@ namespace Nop.Admin.Controllers
             model.AvailableStates.Add(new SelectListItem() { Text = "*", Value = "0" });
 
             return View(model);
-		}
+        }
 
-		[HttpPost]
+        [HttpPost]
         public ActionResult ShipmentListSelect(DataSourceRequest command, ShipmentListModel model)
         {
             if (!_permissionService.Authorize(StandardPermissionProvider.ManageOrders))
@@ -2269,8 +2302,8 @@ namespace Nop.Admin.Controllers
             DateTime? startDateValue = (model.StartDate == null) ? null
                             : (DateTime?)_dateTimeHelper.ConvertToUtcTime(model.StartDate.Value, _dateTimeHelper.CurrentTimeZone);
 
-            DateTime? endDateValue = (model.EndDate == null) ? null 
-                            :(DateTime?)_dateTimeHelper.ConvertToUtcTime(model.EndDate.Value, _dateTimeHelper.CurrentTimeZone).AddDays(1);
+            DateTime? endDateValue = (model.EndDate == null) ? null
+                            : (DateTime?)_dateTimeHelper.ConvertToUtcTime(model.EndDate.Value, _dateTimeHelper.CurrentTimeZone).AddDays(1);
 
             //a vendor should have access only to his products
             int vendorId = 0;
@@ -2279,19 +2312,19 @@ namespace Nop.Admin.Controllers
 
             //load shipments
             var shipments = _shipmentService.GetAllShipments(vendorId,
-                model.CountryId, model.StateProvinceId, model.City, model.TrackingNumber, 
-                startDateValue, endDateValue, 
+                model.CountryId, model.StateProvinceId, model.City, model.TrackingNumber,
+                startDateValue, endDateValue,
                 command.Page - 1, command.PageSize);
             var gridModel = new DataSourceResult
             {
                 Data = shipments.Select(shipment => PrepareShipmentModel(shipment, false)),
                 Total = shipments.TotalCount
             };
-			return new JsonResult
-			{
-				Data = gridModel
-			};
-		}
+            return new JsonResult
+            {
+                Data = gridModel
+            };
+        }
 
         [HttpPost]
         public ActionResult ShipmentsByOrder(int orderId, DataSourceRequest command)
@@ -2459,7 +2492,7 @@ namespace Nop.Admin.Controllers
                 //is shippable
                 if (!orderItem.Product.IsShipEnabled)
                     continue;
-                
+
                 //ensure that this product can be shipped (have at least one item to ship)
                 var maxQtyToAdd = orderItem.GetTotalNumberOfItemsCanBeAddedToShipment();
                 if (maxQtyToAdd <= 0)
@@ -2478,7 +2511,7 @@ namespace Nop.Admin.Controllers
                     continue;
                 if (qtyToAdd > maxQtyToAdd)
                     qtyToAdd = maxQtyToAdd;
-                
+
                 //ok. we have at least one item. let's create a shipment (if it does not exist)
 
                 var orderItemTotalWeight = orderItem.ItemWeight.HasValue ? orderItem.ItemWeight * qtyToAdd : null;
@@ -2518,7 +2551,7 @@ namespace Nop.Admin.Controllers
 
                 SuccessNotification(_localizationService.GetResource("Admin.Orders.Shipments.Added"));
                 return continueEditing
-                           ? RedirectToAction("ShipmentDetails", new {id = shipment.Id})
+                           ? RedirectToAction("ShipmentDetails", new { id = shipment.Id })
                            : RedirectToAction("Edit", new { id = orderId });
             }
             else
@@ -2733,7 +2766,7 @@ namespace Nop.Admin.Controllers
 
             var shipments = new List<Shipment>();
             shipments.Add(shipment);
-            
+
             byte[] bytes = null;
             using (var stream = new MemoryStream())
             {
@@ -2823,7 +2856,7 @@ namespace Nop.Admin.Controllers
             {
                 shipments = shipments.Where(s => HasAccessToShipment(s)).ToList();
             }
-            
+
             foreach (var shipment in shipments)
             {
                 try
@@ -2869,11 +2902,11 @@ namespace Nop.Admin.Controllers
 
             return Json(new { Result = true });
         }
-        
+
         #endregion
 
         #region Order notes
-        
+
         [HttpPost]
         public ActionResult OrderNotesSelect(int orderId, DataSourceRequest command)
         {
@@ -2914,7 +2947,7 @@ namespace Nop.Admin.Controllers
 
             return Json(gridModel);
         }
-        
+
         [ValidateInput(false)]
         public ActionResult OrderNoteAdd(int orderId, int downloadId, bool displayToCustomer, string message)
         {
@@ -2987,7 +3020,7 @@ namespace Nop.Admin.Controllers
                 vendorId = _workContext.CurrentVendor.Id;
 
             var items = _orderReportService.BestSellersReport(
-                vendorId : vendorId,
+                vendorId: vendorId,
                 orderBy: orderBy,
                 pageIndex: pageIndex,
                 pageSize: pageSize,
@@ -3098,7 +3131,7 @@ namespace Nop.Admin.Controllers
             int vendorId = 0;
             if (_workContext.CurrentVendor != null)
                 vendorId = _workContext.CurrentVendor.Id;
-            
+
             DateTime? startDateValue = (model.StartDate == null) ? null
                             : (DateTime?)_dateTimeHelper.ConvertToUtcTime(model.StartDate.Value, _dateTimeHelper.CurrentTimeZone);
 
@@ -3134,7 +3167,7 @@ namespace Nop.Admin.Controllers
                         TotalQuantity = x.TotalQuantity,
                     };
                     var product = _productService.GetProductById(x.ProductId);
-                    if (product!= null)
+                    if (product != null)
                         m.ProductName = product.Name;
                     return m;
                 }),
@@ -3170,7 +3203,7 @@ namespace Nop.Admin.Controllers
 
             DateTime? endDateValue = (model.EndDate == null) ? null
                             : (DateTime?)_dateTimeHelper.ConvertToUtcTime(model.EndDate.Value, _dateTimeHelper.CurrentTimeZone).AddDays(1);
-            
+
             var items = _orderReportService.ProductsNeverSold(vendorId,
                 startDateValue, endDateValue,
                 command.Page - 1, command.PageSize, true);
@@ -3248,7 +3281,7 @@ namespace Nop.Admin.Controllers
         {
             if (!_permissionService.Authorize(StandardPermissionProvider.ManageOrders))
                 return Content("");
-            
+
             //a vendor does have access to this report
             if (_workContext.CurrentVendor != null)
                 return Content("");
@@ -3287,7 +3320,7 @@ namespace Nop.Admin.Controllers
 
             return Json(gridModel);
         }
-        
+
         #endregion
     }
 }
