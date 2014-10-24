@@ -23,6 +23,7 @@ namespace Nop.Services.Orders
         private readonly IRepository<Order> _orderRepository;
         private readonly IRepository<OrderItem> _orderItemRepository;
         private readonly IRepository<Product> _productRepository;
+        private readonly IRepository<ProductCategory> _productCategoryRepository;
 
         private readonly IDateTimeHelper _dateTimeHelper;
         private readonly IProductService _productService;
@@ -42,12 +43,14 @@ namespace Nop.Services.Orders
         public OrderReportService(IRepository<Order> orderRepository,
             IRepository<OrderItem> orderItemRepository,
             IRepository<Product> productRepository,
+            IRepository<ProductCategory> productCategoryRepository,
             IDateTimeHelper dateTimeHelper,
             IProductService productService)
         {
             this._orderRepository = orderRepository;
             this._orderItemRepository = orderItemRepository;
             this._productRepository = productRepository;
+            this._productCategoryRepository = productCategoryRepository;
             this._dateTimeHelper = dateTimeHelper;
             this._productService = productService;
         }
@@ -254,11 +257,10 @@ namespace Nop.Services.Orders
                 categoryIds = new List<int>();
             }
 
-
             var query1 = from orderItem in _orderItemRepository.Table
                          join o in _orderRepository.Table on orderItem.OrderId equals o.Id
                          join p in _productRepository.Table on orderItem.ProductId equals p.Id
-                         //join pc in _productCategoryRepository.Table on p.Id equals pc.ProductId into p_pc from pc in p_pc.DefaultIfEmpty()
+                         join pc in _productCategoryRepository.Table on p.Id equals pc.ProductId into p_pc from pc in p_pc.DefaultIfEmpty()
                          //join pm in _productManufacturerRepository.Table on p.Id equals pm.ProductId into p_pm from pm in p_pm.DefaultIfEmpty()
                          where (storeId == 0 || storeId == o.StoreId) &&
                          (!createdFromUtc.HasValue || createdFromUtc.Value <= o.CreatedOnUtc) &&
@@ -269,14 +271,17 @@ namespace Nop.Services.Orders
                          (!o.Deleted) &&
                          (!p.Deleted) &&
                          (vendorId == 0 || p.VendorId == vendorId) &&
-                             //(categoryId == 0 || pc.CategoryId == categoryId) &&
-                             //(manufacturerId == 0 || pm.ManufacturerId == manufacturerId) &&
                              //rainChange 增加对子类型的匹配
-                         (categoryIds.Count <= 0|| p.ProductCategories.Count(pc => categoryIds.Contains(pc.CategoryId)) > 0) &&
+                             (categoryIds.Count <= 0 || categoryIds.Contains(pc.CategoryId)) &&
+                             //(manufacturerId == 0 || pm.ManufacturerId == manufacturerId) &&
+                             
                          (manufacturerId == 0 || p.ProductManufacturers.Count(pm => pm.ManufacturerId == manufacturerId) > 0) &&
                          (billingCountryId == 0 || o.BillingAddress.CountryId == billingCountryId) &&
                          (showHidden || p.Published)
+                         //from pm in p.ProductCategories.Where(pc => categoryIds.Contains(pc.CategoryId))
                          select orderItem;
+
+
 
             IQueryable<BestsellersReportLine> query2 =
                 //group by products

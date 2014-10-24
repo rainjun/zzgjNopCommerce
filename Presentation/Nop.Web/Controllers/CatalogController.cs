@@ -2455,15 +2455,19 @@ namespace Nop.Web.Controllers
             }
             #endregion
 
+            string cacheKey = string.Format(ModelCacheEventConsumer.HOMEPAGE_PRODUCTSBYTYPE_IDS_KEY, type.ToLower() + "_" + catalogid.ToString() + "_" + partviewname);
+
             if (string.IsNullOrEmpty(type) || "new".Equals(type.ToLower()))
             {
                 #region new
-                var products = _productService.SearchProducts(
-                    storeId: _storeContext.CurrentStore.Id,
-                       visibleIndividuallyOnly: true,
-                       categoryIds: catalogIds,
-                    orderBy: ProductSortingEnum.CreatedOn,
-                    pageSize: (count > 0 ? count : _catalogSettings.RecentlyAddedProductsNumber));
+                var products = _cacheManager.Get(cacheKey,
+                        () => _productService.SearchProducts(
+                            storeId: _storeContext.CurrentStore.Id,
+                               visibleIndividuallyOnly: true,
+                               categoryIds: catalogIds,
+                            orderBy: ProductSortingEnum.CreatedOn,
+                            pageSize: (count > 0 ? count : _catalogSettings.RecentlyAddedProductsNumber))
+                    );
                 model.AddRange(PrepareProductOverviewModels(products));
                 #endregion
             }
@@ -2471,17 +2475,22 @@ namespace Nop.Web.Controllers
             {
                 #region hot
                 //load and cache report
-                var report = _cacheManager.Get(string.Format(ModelCacheEventConsumer.HOMEPAGE_BESTSELLERS_IDS_KEY, _storeContext.CurrentStore.Id),
+                var products = _cacheManager.Get(cacheKey,
                     () =>
-                        _orderReportService.BestSellersReport(
-                        storeId: _storeContext.CurrentStore.Id,
-                        pageSize: (count > 0 ? count : 3),
-                        categoryIds: catalogIds
-                        ));
-                //load products
-                var products = _productService.GetProductsByIds(report.Select(x => x.ProductId).ToArray());
-                //ACL and store mapping
-                products = products.Where(p => _aclService.Authorize(p) && _storeMappingService.Authorize(p)).ToList();
+                    {
+                        var report = _orderReportService.BestSellersReport(
+                           storeId: _storeContext.CurrentStore.Id,
+                           pageSize: (count > 0 ? count : 3),
+                           categoryIds: catalogIds
+                           );
+                        //load products
+                        var productsIn = _productService.GetProductsByIds(report.Select(x => x.ProductId).ToArray());
+                        //ACL and store mapping
+                        productsIn = productsIn.Where(p => _aclService.Authorize(p) && _storeMappingService.Authorize(p)).ToList();
+                        return productsIn;
+                    }
+                    );
+
                 //prepare model
                 model.AddRange(PrepareProductOverviewModels(products, true, true, productThumbPictureSize));
                 #endregion
@@ -2495,12 +2504,14 @@ namespace Nop.Web.Controllers
                 {
                     po = ProductSortingEnum.PriceDesc;
                 }
-                var products = _productService.SearchProducts(
-                    storeId: _storeContext.CurrentStore.Id,
-                       visibleIndividuallyOnly: true,
-                       categoryIds: catalogIds,
-                    orderBy: po,
-                    pageSize: (count > 0 ? count : 3));
+                var products = _cacheManager.Get(cacheKey,
+                        () => _productService.SearchProducts(
+                        storeId: _storeContext.CurrentStore.Id,
+                           visibleIndividuallyOnly: true,
+                           categoryIds: catalogIds,
+                        orderBy: po,
+                        pageSize: (count > 0 ? count : 3))
+                    );
                 model.AddRange(PrepareProductOverviewModels(products));
                 #endregion
             }
