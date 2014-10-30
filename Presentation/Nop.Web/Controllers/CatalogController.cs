@@ -1012,6 +1012,11 @@ namespace Nop.Web.Controllers
 
             #endregion
 
+            #region reviews
+            //reviews
+            model.ReviewOverviewModel = PrepareProductReviewOverviewModel(product);
+            #endregion
+
             return model;
         }
 
@@ -2402,8 +2407,8 @@ namespace Nop.Web.Controllers
                 () =>
                     _orderReportService.BestSellersReport(storeId: _storeContext.CurrentStore.Id,
                     pageSize: _catalogSettings.NumberOfBestsellersOnHomepage));
-
-
+            ViewBag.products = string.Join(",", report.Select(x => x.ProductId));
+            Console.WriteLine("HomepageBestSellersIDs" + ":" + string.Join(",", report.Select(x => x.ProductId)));
             //load products
             var products = _productService.GetProductsByIds(report.Select(x => x.ProductId).ToArray());
             //ACL and store mapping
@@ -2485,6 +2490,8 @@ namespace Nop.Web.Controllers
                            );
                         //load products
                         var productsIn = _productService.GetProductsByIds(report.Select(x => x.ProductId).ToArray());
+                        ViewBag.products = string.Join(",", report.Select(x => x.ProductId));
+                        Console.WriteLine(cacheKey + ":" + string.Join(",", report.Select(x => x.ProductId)));
                         //ACL and store mapping
                         productsIn = productsIn.Where(p => _aclService.Authorize(p) && _storeMappingService.Authorize(p)).ToList();
                         return productsIn;
@@ -2858,6 +2865,23 @@ namespace Nop.Web.Controllers
         //products reviews
         [NopHttpsRequirement(SslRequirement.No)]
         public ActionResult ProductReviews(int productId)
+        {
+            var product = _productService.GetProductById(productId);
+            if (product == null || product.Deleted || !product.Published || !product.AllowCustomerReviews)
+                return RedirectToRoute("HomePage");
+
+            var model = new ProductReviewsModel();
+            PrepareProductReviewsModel(model, product);
+            //only registered users can leave reviews
+            if (_workContext.CurrentCustomer.IsGuest() && !_catalogSettings.AllowAnonymousUsersToReviewProduct)
+                ModelState.AddModelError("", _localizationService.GetResource("Reviews.OnlyRegisteredUsersCanWriteReviews"));
+            //default value
+            model.AddProductReview.Rating = _catalogSettings.DefaultProductRatingValue;
+            return View(model);
+        }
+
+        [ChildActionOnly]
+        public ActionResult ProductReviewsPart(int productId)
         {
             var product = _productService.GetProductById(productId);
             if (product == null || product.Deleted || !product.Published || !product.AllowCustomerReviews)

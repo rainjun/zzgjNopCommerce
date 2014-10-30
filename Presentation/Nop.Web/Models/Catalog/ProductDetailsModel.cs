@@ -20,6 +20,7 @@ namespace Nop.Web.Models.Catalog
             ProductVariantAttributes = new List<ProductVariantAttributeModel>();
             AssociatedProducts = new List<ProductDetailsModel>();
             VendorModel = new VendorBriefInfoModel();
+            ReviewOverviewModel = new ProductReviewOverviewModel();
         }
 
         //picture(s)
@@ -68,11 +69,13 @@ namespace Nop.Web.Models.Catalog
         public AddToCartModel AddToCart { get; set; }
 
         public IList<ProductVariantAttributeModel> ProductVariantAttributes { get; set; }
-    
+
         //a list of associated products. For example, "Grouped" products could have several child "simple" products
         public IList<ProductDetailsModel> AssociatedProducts { get; set; }
 
-		#region Nested Classes
+        public ProductReviewOverviewModel ReviewOverviewModel { get; set; }
+
+        #region Nested Classes
 
         public partial class ProductBreadcrumbModel : BaseNopModel
         {
@@ -242,6 +245,6 @@ namespace Nop.Web.Models.Catalog
             public string FullSizePictureUrl { get; set; }
         }
 
-		#endregion
+        #endregion
     }
 }
